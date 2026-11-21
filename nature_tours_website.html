@@ -226,74 +226,75 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- 1 -->
-                <a href="#services" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル専門地上手配事業の詳細を見る">
+                <a href="#services" onclick="switchTab('tab-1')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル専門地上手配事業の詳細を見る">
                     <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
                         <i class="fa-solid fa-compass"></i>
                     </div>
                     <div>
                         <span class="text-[11px] font-semibold text-gold-700 block uppercase">Land Operator Service</span>
                         <h3 class="font-bold text-gray-900 text-base">モンゴル専門地上手配事業</h3>
-                        <p class="text-xs text-gray-600 mt-1">FITから団体、MICE、特殊テーマツアーまで総合手配</p>
+                        <p class="text-xs text-gray-600 mt-1">FIT、団体、MICE、特殊テーマツアーまで総合手配</p>
                     </div>
                 </a>
 
-                <!-- 2 -->
-                <a href="#services" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="テレルジ国立公園 ゲルキャンプ事業の詳細を見る">
-                    <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
-                        <i class="fa-solid fa-campground"></i>
+                <!-- 2: Hotel & Ger Camp -->
+                <a href="#services" onclick="switchTab('tab-3')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="ホテル＆ゲルキャンプ手配の詳細を見る">
+                    <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center gap-1 text-base shrink-0">
+                        <i class="fa-solid fa-hotel"></i>
+                        <i class="fa-solid fa-campground text-sm"></i>
                     </div>
                     <div>
-                        <span class="text-[11px] font-semibold text-gold-700 block uppercase">Terelj TUMENKHAAN RESORT Booking</span>
-                        <h3 class="font-bold text-gray-900 text-base">テレルジ国立公園 ゲルキャンプ事業</h3>
-                        <p class="text-xs text-gray-600 mt-1">トメンハーンリゾート予約・各種アクティビティ企画</p>
+                        <span class="text-[11px] font-semibold text-gold-700 block uppercase">Hotel &amp; Ger Camp Booking</span>
+                        <h3 class="font-bold text-gray-900 text-base">ホテル＆ゲルキャンプ手配</h3>
+                        <p class="text-xs text-gray-600 mt-1">市内・地方ホテル、ゲルキャンプの手配</p>
                     </div>
                 </a>
 
                 <!-- 3 -->
-                <a href="#services" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル関連 航空券手配事業の詳細を見る">
+                <a href="#services" onclick="switchTab('tab-2')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル関連 航空券手配事業の詳細を見る">
                     <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
                         <i class="fa-solid fa-plane-departure"></i>
                     </div>
                     <div>
                         <span class="text-[11px] font-semibold text-gold-700 block uppercase">Air Ticket Booking</span>
-                        <h3 class="font-bold text-gray-900 text-base">モンゴル関連 航空券手配事業</h3>
+                        <h3 class="font-bold text-gray-900 text-base">モンゴル航空券手配事業</h3>
                         <p class="text-xs text-gray-600 mt-1">MIAT, Aero Mongolia, United Airlines, Hunnu Air等</p>
                     </div>
                 </a>
 
                 <!-- 4 -->
-                <a href="#services" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="ウランバートル市内ホテル予約の詳細を見る">
-                    <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
-                        <i class="fa-solid fa-hotel"></i>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-semibold text-gold-700 block uppercase">BtoB Hotel Booking</span>
-                        <h3 class="font-bold text-gray-900 text-base">ウランバートル市内ホテル予約</h3>
-                        <p class="text-xs text-gray-600 mt-1">ビジネス〜5つ星高級ホテル、地方都市ホテル手配</p>
-                    </div>
-                </a>
-
-                <!-- 5 -->
-                <a href="#services" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル国営鉄道・シベリア鉄道手配の詳細を見る">
+                <a href="#services" onclick="switchTab('tab-5')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル国営鉄道・シベリア鉄道手配の詳細を見る">
                     <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
                         <i class="fa-solid fa-train"></i>
                     </div>
                     <div>
                         <span class="text-[11px] font-semibold text-gold-700 block uppercase">Mongolian Rail Ticket Booking</span>
                         <h3 class="font-bold text-gray-900 text-base">モンゴル国営鉄道・シベリア鉄道手配</h3>
-                        <p class="text-xs text-gray-600 mt-1">国際・国内鉄道切符手配、ホテル等へのデリバリー対応</p>
+                        <p class="text-xs text-gray-600 mt-1">鉄道切符手配、ホテルへのデリバリー対応</p>
                     </div>
                 </a>
 
-                <!-- 6 -->
-                <a href="#services" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル専用車・バス手配事業の詳細を見る">
+                <!-- 5 -->
+                <a href="#services" onclick="switchTab('tab-6')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル専用車・バス手配事業の詳細を見る">
                     <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
                         <i class="fa-solid fa-van-shuttle"></i>
                     </div>
                     <div>
                         <span class="text-[11px] font-semibold text-gold-700 block uppercase">Rent Car Service</span>
                         <h3 class="font-bold text-gray-900 text-base">モンゴル専用車・バス手配事業</h3>
-                        <p class="text-xs text-gray-600 mt-1">45人乗り大型〜Haice、4WDジープ・セダンまで完備</p>
+                        <p class="text-xs text-gray-600 mt-1">バス、Haice、4WDジープ・セダンまで完備</p>
+                    </div>
+                </a>
+
+                <!-- 6 -->
+                <a href="#services" onclick="switchTab('tab-7')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="DMC・政府関連事業の詳細を見る">
+                    <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-building-flag"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-semibold text-gold-700 block uppercase">DMC &amp; Government Relations</span>
+                        <h3 class="font-bold text-gray-900 text-base">DMC・政府関連事業</h3>
+                        <p class="text-xs text-gray-600 mt-1">政府観光局連携・観光プロモーション支援</p>
                     </div>
                 </a>
             </div>
@@ -415,19 +416,25 @@
                 <!-- Tab 1: 地上手配 & 訪日手配 -->
                 <div id="tab-1" class="tab-content block">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                        <div class="lg:col-span-7">
+                        <div class="lg:col-span-12">
                             <span class="inline-block bg-brand-900 text-gold-400 text-xs px-3 py-1 rounded-full font-bold mb-3">地上手配エキスパート</span>
                             <h3 class="font-serif text-2xl font-bold text-brand-900 mb-4">モンゴル地上手配（ランドオペレーター）& モンゴルからの訪日手配業務</h3>
                             <p class="text-gray-700 text-sm leading-relaxed mb-6">
                                 旅行業界のBtoB分野で常に旅行会社様に寄り添い、<span class="bg-gold-400/20 text-brand-900 px-1.5 py-0.5 rounded font-medium">「モンゴルのことならネイチャーツアーズに任せよう」</span>と言われる信頼性の高い企業を目指しております。旅行会社様からの<span class="bg-gold-400/20 text-brand-900 px-1.5 py-0.5 rounded font-medium">「こんなツアーありますか」「これは可能ですか」</span>等のご質問に応え、旅行プロの期待を超える商品提供と事業拡大をサポートします。
                             </p>
-                            <a href="https://mongoru.jp" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-900 hover:text-gold-600 transition-colors">
-                                モンゴル豊富な現地ツアー情報 mongoru.jpへ <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            <a href="https://mongoru.jp/" target="_blank" rel="noopener noreferrer" class="group mt-2 mb-3 inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </span>
+                                <span>モンゴル豊富な現地ツアー情報 <span class="text-gold-400">mongoru.jpへ</span></span>
+                                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </span>
                             </a>
                             
                             <!-- Sub Items -->
-                            <div class="space-y-4">
-                                <div class="bg-white p-4 rounded-xl border border-gray-100">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-white p-4 rounded-xl border border-gray-100 h-full">
                                     <h4 class="font-bold text-gray-900 text-sm mb-2 text-brand-900 flex items-center gap-2">
                                         <i class="fa-solid fa-check text-gold-600"></i> モンゴル現地対応カテゴリ
                                     </h4>
@@ -443,7 +450,7 @@
                                     </div>
                                 </div>
 
-                                <div class="bg-white p-4 rounded-xl border border-gray-100">
+                                <div class="bg-white p-4 rounded-xl border border-gray-100 h-full">
                                     <h4 class="font-bold text-gray-900 text-sm mb-2 text-brand-900 flex items-center gap-2">
                                         <i class="fa-solid fa-plane-arrival text-gold-600"></i> モンゴル人観光客の訪日手配（インバウンド）
                                     </h4>
@@ -454,14 +461,6 @@
                             </div>
                         </div>
 
-                        <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1547846067-160517591605?auto=format&fit=crop&w=600&q=80" alt="Mongolia Steppe" class="w-full h-48 object-cover rounded-xl mb-4">
-                            <h4 class="font-bold text-gray-900 text-sm">モンゴル旅専門店 mongoru.jp</h4>
-                            <p class="text-xs text-gray-600 mt-1 mb-4">現地最新ツアー情報およびパーツ手配の詳細情報を掲載しています。</p>
-                            <a href="#contact" class="inline-flex items-center text-xs font-bold text-brand-900 hover:text-gold-600">
-                                詳細・カタログのお問い合わせ <i class="fa-solid fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
@@ -476,19 +475,32 @@
                             </p>
 
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-                                <div class="bg-white p-3 rounded-xl border text-center font-bold text-xs text-brand-900">
-                                    MIATモンゴル航空
+                                <div class="bg-white p-3 rounded-xl border flex flex-col items-center justify-center gap-2" title="MIATモンゴル航空">
+                                    <img src="assets/images/miat-mongolian-airlines.png" alt="MIATモンゴル航空" class="h-10 w-full object-contain">
+                                    <span class="text-center text-[11px] font-bold text-brand-900">MIATモンゴル航空</span>
                                 </div>
-                                <div class="bg-white p-3 rounded-xl border text-center font-bold text-xs text-brand-900">
-                                    アエロモンゴリア航空
+                                <div class="bg-white p-3 rounded-xl border flex flex-col items-center justify-center gap-2" title="アエロモンゴリア航空">
+                                    <img src="assets/images/aero-mongolia.png" alt="アエロモンゴリア航空" class="h-10 w-full object-contain">
+                                    <span class="text-center text-[11px] font-bold text-brand-900">アエロモンゴリア航空</span>
                                 </div>
-                                <div class="bg-white p-3 rounded-xl border text-center font-bold text-xs text-brand-900">
-                                    ユナイテッド航空
+                                <div class="bg-white p-3 rounded-xl border flex flex-col items-center justify-center gap-2" title="ユナイテッド航空">
+                                    <img src="assets/images/united-airlines.png" alt="ユナイテッド航空" class="h-10 w-full object-contain">
+                                    <span class="text-center text-[11px] font-bold text-brand-900">ユナイテッド航空</span>
                                 </div>
-                                <div class="bg-white p-3 rounded-xl border text-center font-bold text-xs text-brand-900">
-                                    フンヌエアー航空
+                                <div class="bg-white p-3 rounded-xl border flex flex-col items-center justify-center gap-2" title="フンヌエアー航空">
+                                    <img src="assets/images/hunnu-air.png" alt="フンヌエアー航空" class="h-10 w-full object-contain">
+                                    <span class="text-center text-[11px] font-bold text-brand-900">フンヌエアー航空</span>
                                 </div>
                             </div>
+                            <a href="https://mongoru.jp/ticket-info-2/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                    <i class="fa-solid fa-plane-departure"></i>
+                                </span>
+                                <span>モンゴル航空券手配情報</span>
+                                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
                         </div>
                         <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-200">
                             <div class="flex items-center gap-3 text-brand-900 mb-3">
@@ -511,9 +523,18 @@
                         <div class="lg:col-span-7">
                             <span class="inline-block bg-brand-900 text-gold-400 text-xs px-3 py-1 rounded-full font-bold mb-3">確実な手配力</span>
                             <h3 class="font-serif text-2xl font-bold text-brand-900 mb-4">ウランバートル市内・地方都市ホテル予約</h3>
-                            <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                            <p class="text-gray-700 text-sm leading-relaxed mb-3">
                                 ウランバートル市内のビジネスホテルから5つ星ラグジュアリーホテルまで、豊富なホテル情報とリーズナブルな価格で対応いたします。地方都市のホテル手配も網羅。ホテル単体だけでなく、「ホテル＋送迎」「ホテル＋日本語ガイド」などの組合せも自由自在です。
                             </p>
+                            <a href="https://mongoru.jp/hotel-info/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                    <i class="fa-solid fa-hotel"></i>
+                                </span>
+                                <span>ウランバートルホテル予約情報</span>
+                                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
                         </div>
                         <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-200">
                             <h4 class="font-bold text-gray-900 text-sm mb-3">主な提携ホテル一覧</h4>
@@ -543,7 +564,6 @@
                         <p class="text-gray-700 text-sm leading-relaxed">
                             ウランバートル郊外のテレルジ国立公園へ向かうルートには、ナライハ市観光、チンギスハーン騎馬像、亀岩、チベット仏教のアリヤバル寺などモンゴルを代表する観光ルートが広がります。その奥深き大自然の中に位置するのが「トメンハーンリゾート」です。
                         </p>
-
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <div class="bg-white p-4 rounded-xl border border-gray-100">
                                 <div class="text-gold-600 text-lg mb-2"><i class="fa-solid fa-person-hiking"></i></div>
@@ -563,6 +583,15 @@
                                 <p class="text-xs text-gray-600 mt-1">好評の本格料理。光害がなく夜はホットドリンク付きでシート・布団を敷き満天の星空を堪能</p>
                             </div>
                         </div>
+                        <a href="https://tumenkhaan.mn/jp/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                <i class="fa-solid fa-campground"></i>
+                            </span>
+                            <span>テレルジ国立公園ゲルキャンプ予約情報</span>
+                            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </span>
+                        </a>
                             </div>
                         </div>
                     </div>
@@ -590,6 +619,15 @@
                                 <div class="bg-white p-2.5 rounded-lg border text-gray-700">8. 田舎村の風景鑑賞</div>
                                 <div class="bg-white p-2.5 rounded-lg border text-gray-700">9. 明確な時刻で予定が立て易い</div>
                             </div>
+                            <a href="https://mongoru.jp/ticket-info-2/railway/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                    <i class="fa-solid fa-train"></i>
+                                </span>
+                                <span>モンゴルシベリア鉄道予約情報</span>
+                                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
                         </div>
                         <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-200 flex flex-col justify-center">
                             <i class="fa-solid fa-ticket-simple text-4xl text-gold-600 mb-3"></i>
@@ -1105,9 +1143,10 @@
             // Show selected content
             document.getElementById(tabId).classList.remove('hidden');
 
-            // Highlight active button
-            event.currentTarget.classList.add('active');
-            event.currentTarget.classList.remove('text-gray-600');
+            // Highlight the matching navigation tab, including when opened from a service card
+            const activeButton = Array.from(buttons).find(btn => btn.getAttribute('onclick')?.includes(`'${tabId}'`));
+            activeButton?.classList.add('active');
+            activeButton?.classList.remove('text-gray-600');
         }
 
         // Policy Modals
