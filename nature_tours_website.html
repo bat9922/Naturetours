@@ -73,6 +73,28 @@
             background-color: #fbf9f5;
             font-weight: 700;
         }
+        .partner-marquee {
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+        }
+        .partner-marquee-track {
+            display: flex;
+            gap: 1rem;
+            width: max-content;
+            animation: partner-marquee-scroll 48s linear infinite;
+        }
+        .partner-marquee-track > div {
+            flex: 0 0 8rem;
+        }
+        .partner-marquee:hover .partner-marquee-track {
+            animation-play-state: paused;
+        }
+        @keyframes partner-marquee-scroll {
+            to { transform: translateX(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .partner-marquee-track { animation: none; }
+        }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -221,7 +243,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
                 <span class="text-xs font-bold uppercase tracking-widest text-gold-600">Core Services</span>
-                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-900 mt-1">ワンストップ手配事業一覧</h2>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-900 mt-1">ワンストップ手配事業</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -422,16 +444,6 @@
                             <p class="text-gray-700 text-sm leading-relaxed mb-6">
                                 旅行業界のBtoB分野で常に旅行会社様に寄り添い、<span class="bg-gold-400/20 text-brand-900 px-1.5 py-0.5 rounded font-medium">「モンゴルのことならネイチャーツアーズに任せよう」</span>と言われる信頼性の高い企業を目指しております。旅行会社様からの<span class="bg-gold-400/20 text-brand-900 px-1.5 py-0.5 rounded font-medium">「こんなツアーありますか」「これは可能ですか」</span>等のご質問に応え、旅行プロの期待を超える商品提供と事業拡大をサポートします。
                             </p>
-                            <a href="https://mongoru.jp/" target="_blank" rel="noopener noreferrer" class="group mt-2 mb-3 inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
-                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
-                                    <i class="fa-solid fa-map-location-dot"></i>
-                                </span>
-                                <span>モンゴル豊富な現地ツアー情報 <span class="text-gold-400">mongoru.jpへ</span></span>
-                                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </span>
-                            </a>
-                            
                             <!-- Sub Items -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div class="bg-white p-4 rounded-xl border border-gray-100 h-full">
@@ -458,6 +470,17 @@
                                         モンゴル人の訪日ツアー各種パーツ手配（ホテル、バス、ガイド等）も取り扱っております。富士山、東京、京都、温泉旅行、ディズニーランド旅行をはじめ、学校交流、展示会旅行、視察旅行、社員旅行、家族旅行など幅広い分野で対応いたします。
                                     </p>
                                 </div>
+                            </div>
+                            <div class="mt-4">
+                                <a href="https://mongoru.jp/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                        <i class="fa-solid fa-map-location-dot"></i>
+                                    </span>
+                                    <span>モンゴル豊富な現地ツアー情報 <span class="text-gold-400">mongoru.jpへ</span></span>
+                                    <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </span>
+                                </a>
                             </div>
                         </div>
 
@@ -674,6 +697,15 @@
                                     <div class="text-[10px] text-gray-500">悪路・少人数用</div>
                                 </div>
                             </div>
+                            <a href="https://mongoru.jp/private-car/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                    <i class="fa-solid fa-van-shuttle"></i>
+                                </span>
+                                <span>モンゴル専用車・バス手配情報</span>
+                                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
                         </div>
                         <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-200">
                             <h4 class="font-bold text-gray-900 text-sm mb-3">安全・快適な運行品質</h4>
@@ -689,15 +721,18 @@
                     <div class="space-y-4">
                         <span class="inline-block bg-gold-600 text-white text-xs px-3 py-1 rounded-full font-bold">モンゴル政府観光局連携</span>
                         <h3 class="font-serif text-2xl font-bold text-brand-900">DMC (Destination Management Company) 事業</h3>
-                        <p class="text-gray-700 text-sm leading-relaxed">
-                            モンゴル政府は【2024～2028モンゴル訪問年・GO MONGOLIA】政策を打ち出し、観光産業の発展に注力しています。さらに2027年（令和9年）には日本とモンゴルの外交関係樹立55周年を迎えます。
-                        </p>
-
-                        <div class="bg-white p-6 rounded-xl border border-gray-200">
-                            <h4 class="font-bold text-brand-900 text-base mb-2">モンゴル政府観光局日本連絡事務所（レップオフィス）業務</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed">
-                                主にモンゴル観光名所・デスティネーション、ゲルキャンプ、ホテル、各旅行社及び航空会社に対する紹介、イベント・プロモーション活動を通じて日本の旅行会社様にモンゴル観光を宣伝し、現地の発展をサポートしています。モンゴル政府観光局（MTO）、ウランバートル市観光局、モンゴル・日本観光協会等と強固なパイプを保持しています。
-                            </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-6 rounded-xl border border-gray-200 h-full">
+                                <p class="text-sm text-gray-700 leading-relaxed">
+                                    モンゴル政府は<span class="bg-gold-400/20 text-gold-700 px-1.5 py-0.5 rounded font-medium">【2024～2028モンゴル訪問年・GO MONGOLIA】</span>政策を打ち出し、観光産業の発展に注力しています。さらに2027年（令和9年）には<span class="bg-gold-400/20 text-gold-700 px-1.5 py-0.5 rounded font-medium">日本とモンゴルの外交関係樹立55周年</span>を迎えます。
+                                </p>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl border border-gray-200 h-full">
+                                <h4 class="font-bold text-brand-900 text-base mb-2">モンゴル観光業宣伝・イベント開催サポート業務</h4>
+                                <p class="text-xs text-gray-600 leading-relaxed">
+                                    主にモンゴル観光名所・デスティネーション、ゲルキャンプ、ホテル、各旅行社及び航空会社に対する紹介、イベント・プロモーション活動を通じて日本の旅行会社様にモンゴル観光を宣伝し、両国観光業発展の貢献を目指す。モンゴル政府観光局（MTO）、ウランバートル市観光局、モンゴル・日本観光協会等と協力していく。
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -868,29 +903,6 @@
         </div>
     </section>
 
-    <!-- Partners & Affiliates Logo Bar -->
-    <section class="py-12 bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-6">Partners & Airlines & Hotels</span>
-            <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10 text-xs font-bold text-gray-500">
-                <span class="hover:text-brand-900 transition-colors">MIAT</span>
-                <span class="hover:text-brand-900 transition-colors">AEROMONGOLIA</span>
-                <span class="hover:text-brand-900 transition-colors">HUNNU AIR</span>
-                <span class="hover:text-brand-900 transition-colors">MONGOLIAN RAILWAY</span>
-                <span class="hover:text-brand-900 transition-colors">AUTO TEEVER</span>
-                <span class="hover:text-brand-900 transition-colors">MTO (Mongolian Tourism Org)</span>
-                <span class="hover:text-brand-900 transition-colors">TOYOKO INN</span>
-                <span class="hover:text-brand-900 transition-colors">TUUSHIN HOTEL</span>
-                <span class="hover:text-brand-900 transition-colors">FLOWER HOTEL</span>
-                <span class="hover:text-brand-900 transition-colors">CORPORATE HOTEL</span>
-                <span class="hover:text-brand-900 transition-colors">BAYANGOL HOTEL</span>
-                <span class="hover:text-brand-900 transition-colors">GRAND HILL HOTEL</span>
-                <span class="hover:text-brand-900 transition-colors">ALTANTOUR</span>
-                <span class="hover:text-brand-900 transition-colors">TUMENKHAAN</span>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact & Inquiry Section -->
     <section id="contact" class="py-20 bg-sand">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1002,6 +1014,80 @@
         </div>
     </section>
 
+    <!-- Partners & Affiliates Logo Bar -->
+    <section class="py-12 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-6">Partners &amp; Airlines &amp; Hotels</span>
+            <div class="partner-marquee">
+                <div class="partner-marquee-track">
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="MIATモンゴル航空">
+                    <img src="assets/images/miat-mongolian-airlines.png" alt="MIATモンゴル航空" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="アエロモンゴリア航空">
+                    <img src="assets/images/aero-mongolia.png" alt="アエロモンゴリア航空" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="UNITED AIRLINES">
+                    <img src="assets/images/united-airlines.png" alt="UNITED AIRLINES" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="フンヌエアー航空">
+                    <img src="assets/images/hunnu-air.png" alt="フンヌエアー航空" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Ulaanbaatar Railway">
+                    <img src="https://www.google.com/s2/favicons?domain=mtz.mn&amp;sz=128" alt="Ulaanbaatar Railway" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Chinggis Khaan International Airport">
+                    <img src="https://www.google.com/s2/favicons?domain=ulaanbaatar-airport.mn&amp;sz=128" alt="Chinggis Khaan International Airport" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Mongolian Tourism Organization">
+                    <img src="https://www.selenatravel.com/assets/images/mto.png" alt="Mongolian Tourism Organization" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Ulaanbaatar City">
+                    <img src="https://www.google.com/s2/favicons?domain=ulaanbaatar.mn&amp;sz=128" alt="Ulaanbaatar City" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="TOYOKO INN">
+                    <img src="https://reserve.toyoko-inn-bus.com/images/logo.png" alt="TOYOKO INN" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Tuushin Hotel">
+                    <img src="https://www.google.com/s2/favicons?domain=bestwesternmongolia.mn&amp;sz=128" alt="Tuushin Hotel" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="FLOWER HOTEL">
+                    <img src="https://www.google.com/s2/favicons?domain=flower-hotel.mn&amp;sz=128" alt="FLOWER HOTEL" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="CORPORATE HOTEL &amp; CONVENTION CENTRE ULAANBAATAR">
+                    <img src="https://www.google.com/s2/favicons?domain=corporatehotel.mn&amp;sz=128" alt="CORPORATE HOTEL &amp; CONVENTION CENTRE ULAANBAATAR" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="THE GRAND HILL HOTEL ULAANBAATAR">
+                    <img src="https://grandhillhotel.mn/contents/images/logo.png" alt="THE GRAND HILL HOTEL ULAANBAATAR" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="BAYANGOL HOTEL">
+                    <img src="https://www.google.com/s2/favicons?domain=bayangolhotel.mn&amp;sz=128" alt="BAYANGOL HOTEL" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Ulaanbaatar Hotel">
+                    <img src="https://www.google.com/s2/favicons?domain=ubhotel.mn&amp;sz=128" alt="Ulaanbaatar Hotel" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="BLUE SKY HOTEL TOWER ULAANBAATAR">
+                    <img src="https://www.google.com/s2/favicons?domain=bluesky.mn&amp;sz=128" alt="BLUE SKY HOTEL TOWER ULAANBAATAR" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="NARANTUUL HOTEL">
+                    <img src="https://www.google.com/s2/favicons?domain=narantuulhotel.mn&amp;sz=128" alt="NARANTUUL HOTEL" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="KEMPINSKI HOTEL ULAANBAATAR">
+                    <img src="https://www.google.com/s2/favicons?domain=kempinski.com&amp;sz=128" alt="KEMPINSKI HOTEL ULAANBAATAR" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="RAMADA HOTEL ULAANBAATAR">
+                    <img src="https://www.google.com/s2/favicons?domain=wyndhamhotels.com&amp;sz=128" alt="RAMADA HOTEL ULAANBAATAR" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="TUMENKHAAN RESORT">
+                    <img src="https://www.google.com/s2/favicons?domain=tumenkhaan.mn&amp;sz=128" alt="TUMENKHAAN" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="ALTANTOUR LLC">
+                    <img src="https://tabi-choku.com/assets/upimg/account44/1/image_800x.jpg?t=1773277137" alt="ALTANTOUR LLC" class="max-h-9 max-w-full object-contain">
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-brand-dark text-gray-400 text-xs py-12 border-t border-brand-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -1101,7 +1187,7 @@
             { label: 'Air Ticket Booking', title: 'モンゴル関連 航空券手配事業', description: 'MIAT, Aero Mongolia, United Airlines, Hunnu Air等', icon: 'fa-plane-departure' },
             { label: 'Mongolian Rail Ticket Booking', title: 'モンゴル国営鉄道・シベリア鉄道手配', description: '国際・国内鉄道切符手配、ホテル等へのデリバリー対応', icon: 'fa-train' },
             { label: 'Rent Car Service', title: 'モンゴル専用車・バス手配事業', description: '45人乗り大型〜Haice、4WDジープ・セダンまで完備', icon: 'fa-van-shuttle' },
-            { label: 'モンゴル専門 BtoB ランドオペレーター', title: 'モンゴル専門ならではの現地ツアー・宿泊・航空券・鉄道・車、全てのニーズにワンストップでおえします。', description: '株式会社ネイチャーツアーズ（NATURE TOURS）は、旅行会社様・各団体様の多様なモンゴル手配を、確かな経験と現地ネットワークで高品質にサポートします。企画から予約、現地での運行・緊急対応まで、安心してお任せください。', icon: 'fa-shield-halved' }
+            { label: 'モンゴル専門 BtoB ランドオペレーター', title: 'モンゴル手配を確かな経験と現地ネットワークで高品質にサポートします。', description: '企画から予約、現地手配・緊急対応まで安心してお任せください。', icon: 'fa-shield-halved' }
         ];
         let activeHeroSlide = 0;
         let heroTimer;
@@ -1203,6 +1289,16 @@
             setTimeout(() => {
                 toast.classList.add('hidden');
             }, 4000);
+        }
+
+        // Duplicate logo tiles for a seamless partner marquee
+        const partnerLogoTrack = document.querySelector('.partner-marquee-track');
+        if (partnerLogoTrack) {
+            Array.from(partnerLogoTrack.children).forEach(tile => {
+                const duplicate = tile.cloneNode(true);
+                duplicate.setAttribute('aria-hidden', 'true');
+                partnerLogoTrack.appendChild(duplicate);
+            });
         }
     </script>
 </body>
