@@ -396,16 +396,13 @@
                     <i class="fa-solid fa-plane mr-1.5"></i> 航空券手配
                 </button>
                 <button onclick="switchTab('tab-3')" class="tab-btn px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all text-gray-600">
-                    <i class="fa-solid fa-hotel mr-1.5"></i> ホテル予約
-                </button>
-                <button onclick="switchTab('tab-4')" class="tab-btn px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all text-gray-600">
-                    <i class="fa-solid fa-campground mr-1.5"></i> テレルジゲルキャンプ
+                    <i class="fa-solid fa-hotel mr-1.5"></i> ホテル＆ゲルキャンプ手配
                 </button>
                 <button onclick="switchTab('tab-5')" class="tab-btn px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all text-gray-600">
-                    <i class="fa-solid fa-train-subway mr-1.5"></i> シベリア鉄道予約
+                    <i class="fa-solid fa-train-subway mr-1.5"></i> シベリア鉄道切符手配
                 </button>
                 <button onclick="switchTab('tab-6')" class="tab-btn px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all text-gray-600">
-                    <i class="fa-solid fa-bus mr-1.5"></i> バス・専用車予約
+                    <i class="fa-solid fa-bus mr-1.5"></i> バス・専用車手配
                 </button>
                 <button onclick="switchTab('tab-7')" class="tab-btn px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all text-gray-600">
                     <i class="fa-solid fa-building-flag mr-1.5"></i> DMC・政府関連事業
@@ -422,8 +419,11 @@
                             <span class="inline-block bg-brand-900 text-gold-400 text-xs px-3 py-1 rounded-full font-bold mb-3">地上手配エキスパート</span>
                             <h3 class="font-serif text-2xl font-bold text-brand-900 mb-4">モンゴル地上手配（ランドオペレーター）& モンゴルからの訪日手配業務</h3>
                             <p class="text-gray-700 text-sm leading-relaxed mb-6">
-                                旅行業界のBtoB分野で常に旅行会社様に寄り添い、「モンゴルのことならネイチャーツアーズに任せよう」と言われる信頼性の高い企業を目指しております。旅行会社様からの「こんなツアーありますか」「これは可能ですか」等のご質問に応え、旅行プロの期待を超える商品提供と事業拡大をサポートします。
+                                旅行業界のBtoB分野で常に旅行会社様に寄り添い、<span class="bg-gold-400/20 text-brand-900 px-1.5 py-0.5 rounded font-medium">「モンゴルのことならネイチャーツアーズに任せよう」</span>と言われる信頼性の高い企業を目指しております。旅行会社様からの<span class="bg-gold-400/20 text-brand-900 px-1.5 py-0.5 rounded font-medium">「こんなツアーありますか」「これは可能ですか」</span>等のご質問に応え、旅行プロの期待を超える商品提供と事業拡大をサポートします。
                             </p>
+                            <a href="https://mongoru.jp" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-900 hover:text-gold-600 transition-colors">
+                                モンゴル豊富な現地ツアー情報 mongoru.jpへ <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
                             
                             <!-- Sub Items -->
                             <div class="space-y-4">
@@ -504,9 +504,10 @@
                     </div>
                 </div>
 
-                <!-- Tab 3: ホテル予約 -->
+                <!-- Tab 3: ホテル＆ゲルキャンプ手配 -->
                 <div id="tab-3" class="tab-content hidden">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="space-y-10">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                         <div class="lg:col-span-7">
                             <span class="inline-block bg-brand-900 text-gold-400 text-xs px-3 py-1 rounded-full font-bold mb-3">確実な手配力</span>
                             <h3 class="font-serif text-2xl font-bold text-brand-900 mb-4">ウランバートル市内・地方都市ホテル予約</h3>
@@ -529,11 +530,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Tab 4: テレルジゲルキャンプ -->
-                <div id="tab-4" class="tab-content hidden">
-                    <div class="space-y-6">
+                        <div class="border-t border-gray-200 pt-8">
+                            <div class="space-y-6">
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                             <div>
                                 <span class="inline-block bg-gold-600 text-white text-xs px-3 py-1 rounded-full font-bold mb-2">一押しリゾート</span>
@@ -563,6 +561,8 @@
                                 <div class="text-gold-600 text-lg mb-2"><i class="fa-solid fa-star text-gold-500"></i></div>
                                 <h4 class="font-bold text-sm text-gray-900">評判の料理 & 星空観察</h4>
                                 <p class="text-xs text-gray-600 mt-1">好評の本格料理。光害がなく夜はホットドリンク付きでシート・布団を敷き満天の星空を堪能</p>
+                            </div>
+                        </div>
                             </div>
                         </div>
                     </div>
