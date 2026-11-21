@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../jamotours"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Naturetours"
+	}
+}
