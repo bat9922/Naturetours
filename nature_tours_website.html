@@ -59,9 +59,21 @@
             opacity: 1;
             transform: scale(1);
         }
+        .hero-slide:nth-child(5) {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: #111111;
+        }
         .hero-dot[aria-current="true"] {
             width: 2rem;
             background-color: #e5ab58;
+        }
+        .hero-title-compact {
+            font-size: clamp(1rem, 2.1vw, 1.875rem);
+            letter-spacing: -0.04em;
+        }
+        @media (min-width: 640px) {
+            .hero-title-compact { white-space: nowrap; }
         }
         .pattern-overlay {
             background-image: radial-gradient(rgba(212, 163, 115, 0.15) 1px, transparent 1px);
@@ -73,6 +85,51 @@
             background-color: #fbf9f5;
             font-weight: 700;
         }
+        .strength-flip-card {
+            min-height: 24rem;
+            cursor: pointer;
+            perspective: 1200px;
+        }
+        .strength-flip-card:focus-visible {
+            outline: 3px solid #c58b2a;
+            outline-offset: 4px;
+            border-radius: 1rem;
+        }
+        .strength-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 24rem;
+            transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .strength-flip-card.is-flipped .strength-flip-inner {
+            transform: rotateY(180deg);
+        }
+        .strength-card-face {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            border-radius: 1rem;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .strength-card-front {
+            background: #ffffff;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 1px 3px rgba(15, 41, 30, 0.08);
+        }
+        .strength-card-back {
+            transform: rotateY(180deg);
+            background: #1b4332;
+            color: #ffffff;
+            box-shadow: 0 16px 32px rgba(15, 41, 30, 0.22);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .strength-flip-inner { transition: none; }
+        }
         .partner-marquee {
             overflow: hidden;
             mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
@@ -81,10 +138,39 @@
             display: flex;
             gap: 1rem;
             width: max-content;
-            animation: partner-marquee-scroll 48s linear infinite;
+            animation: partner-marquee-scroll 90s linear infinite;
         }
         .partner-marquee-track > div {
-            flex: 0 0 8rem;
+            flex: 0 0 10rem;
+            height: 6rem !important;
+            padding: 0.75rem 1rem 1.5rem !important;
+            background: #ffffff !important;
+            border-color: #e5e7eb !important;
+            box-shadow: 0 1px 3px rgba(15, 41, 30, 0.08);
+            position: relative;
+        }
+        .partner-marquee-track > div::after {
+            content: attr(title);
+            position: absolute;
+            bottom: 0.35rem;
+            left: 0.5rem;
+            right: 0.5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #4b5563;
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+        .partner-marquee-track img {
+            max-height: 3rem !important;
+            max-width: 100%;
+            filter: saturate(1.1) contrast(1.06) drop-shadow(0 1px 1px rgba(15, 41, 30, 0.14));
+        }
+        .partner-marquee-track img.h-9 {
+            height: 3rem !important;
+            width: 3rem !important;
         }
         .partner-marquee:hover .partner-marquee-track {
             animation-play-state: paused;
@@ -115,7 +201,7 @@
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-2 text-center sm:text-left">
                 <span class="bg-gold-600 text-white text-xs px-2 py-0.5 rounded font-bold">最新情報</span>
-                <span class="text-gray-200">【2024～2028モンゴル訪問年・GO MONGOLIA】2027年 日・モンゴル外交関係樹立55周年記念ツアー企画受付中</span>
+                <span class="text-gray-200">【2024～2028モンゴル訪問年・GO MONGOLIA】 &amp; 【日本・モンゴル外交関係樹立55周年】記念ツアー企画受付中</span>
             </div>
             <div class="flex items-center gap-4 text-xs">
                 <a href="tel:07091819922" class="hover:text-white transition-colors flex items-center gap-1 font-semibold">
@@ -193,7 +279,7 @@
         <div class="absolute inset-0 pattern-overlay opacity-30 pointer-events-none"></div>
         
         <div class="max-w-7xl mx-auto w-full relative z-10">
-            <div class="max-w-3xl">
+            <div class="max-w-7xl">
                 <!-- Subtitle Badge -->
                 <div class="inline-flex items-center gap-2 bg-gold-600/30 backdrop-blur-md border border-gold-500/50 px-4 py-1.5 rounded-full text-gold-400 font-medium text-sm mb-6">
                     <i id="hero-icon" class="fa-solid fa-hotel"></i> <span id="hero-label">BtoB Hotel Booking</span>
@@ -337,62 +423,89 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-brand-900 group-hover:text-gold-400 transition-colors">
-                            <i class="fa-solid fa-users-gear"></i>
+                <div class="strength-flip-card" role="button" tabindex="0" aria-pressed="false" aria-label="モンゴル全土のネットワークと経験豊富なスタッフの詳細を表示" onclick="toggleStrengthCard(this)" onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); toggleStrengthCard(this); }">
+                    <div class="strength-flip-inner">
+                        <div class="strength-card-face strength-card-front">
+                            <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gold-600 uppercase tracking-wider">Strength 01</span>
+                            <h3 class="font-serif text-xl font-bold text-gray-900 mt-1">モンゴル全土のネットワークと<br>経験豊富なスタッフ</h3>
+                            <div class="mt-auto pt-4 border-t border-gray-100 text-xs font-semibold text-brand-900 flex items-center justify-between">
+                                <span>クリックして詳細を見る</span>
+                                <i class="fa-solid fa-arrow-rotate-right text-gold-600"></i>
+                            </div>
                         </div>
-                        <span class="text-xs font-bold text-gold-600 uppercase tracking-wider">Strength 01</span>
-                        <h3 class="font-serif text-xl font-bold text-gray-900 mt-1 mb-4">
-                            モンゴル全土のネットワークと<br>経験豊富なスタッフ
-                        </h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            モンゴルツアー25年の経験と実績を持つモンゴル人スタッフがお手伝いします。複雑なご要望や特殊なツアーにも柔軟に対応し、御社だけのオーダーメイド手配を行います。FITから大団体ツアーまでお気軽にご相談ください。
-                        </p>
-                    </div>
-                    <div class="mt-8 pt-4 border-t border-gray-100 text-xs font-semibold text-brand-900 flex items-center justify-between">
-                        <span>FIT / 団体・オーダーメイド対応</span>
-                        <i class="fa-solid fa-circle-check text-gold-600"></i>
+                        <div class="strength-card-face strength-card-back">
+                            <div class="flex items-center justify-between mb-5">
+                                <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Strength 01</span>
+                                <i class="fa-solid fa-users-gear text-gold-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold leading-snug">モンゴル全土のネットワークと経験豊富なスタッフ</h3>
+                            <p class="text-sm text-gray-100 leading-relaxed mt-4">モンゴルツアー25年の経験と実績を持つモンゴル人スタッフがお手伝いします。複雑なご要望や特殊なツアーにも柔軟に対応し、御社だけのオーダーメイド手配を行います。FITから大団体ツアーまでお気軽にご相談ください。</p>
+                            <div class="mt-auto pt-4 border-t border-white/15 text-xs font-semibold text-gold-400 flex items-center justify-between">
+                                <span>FIT / 団体・オーダーメイド対応</span>
+                                <span><i class="fa-solid fa-arrow-rotate-left mr-1"></i> 戻る</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-brand-900 group-hover:text-gold-400 transition-colors">
-                            <i class="fa-solid fa-diagram-project"></i>
+                <div class="strength-flip-card" role="button" tabindex="0" aria-pressed="false" aria-label="モンゴル特化BtoB専門のワンストップ・ソリューションの詳細を表示" onclick="toggleStrengthCard(this)" onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); toggleStrengthCard(this); }">
+                    <div class="strength-flip-inner">
+                        <div class="strength-card-face strength-card-front">
+                            <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+                                <i class="fa-solid fa-diagram-project"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gold-600 uppercase tracking-wider">Strength 02</span>
+                            <h3 class="font-serif text-xl font-bold text-gray-900 mt-1">モンゴル特化BtoB専門の<br>ワンストップ・ソリューション</h3>
+                            <div class="mt-auto pt-4 border-t border-gray-100 text-xs font-semibold text-brand-900 flex items-center justify-between">
+                                <span>クリックして詳細を見る</span>
+                                <i class="fa-solid fa-arrow-rotate-right text-gold-600"></i>
+                            </div>
                         </div>
-                        <span class="text-xs font-bold text-gold-600 uppercase tracking-wider">Strength 02</span>
-                        <h3 class="font-serif text-xl font-bold text-gray-900 mt-1 mb-4">
-                            モンゴル特化BtoB専門の<br>ワンストップ・ソリューション
-                        </h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            車、ガイド、送迎、宿泊、現地ツアーに加え、登山、野鳥観察、ユキヒョウ観察、遺跡調査など専門性の高い特殊ツアーまで手配可能。旅行会社、政府機関、自治体、学校、NPO各団体のあらゆるニーズに応えます。
-                        </p>
-                    </div>
-                    <div class="mt-8 pt-4 border-t border-gray-100 text-xs font-semibold text-brand-900 flex items-center justify-between">
-                        <span>学術調査・特殊ツアー対応</span>
-                        <i class="fa-solid fa-circle-check text-gold-600"></i>
+                        <div class="strength-card-face strength-card-back">
+                            <div class="flex items-center justify-between mb-5">
+                                <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Strength 02</span>
+                                <i class="fa-solid fa-diagram-project text-gold-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold leading-snug">モンゴル特化BtoB専門のワンストップ・ソリューション</h3>
+                            <p class="text-sm text-gray-100 leading-relaxed mt-4">車、ガイド、送迎、宿泊、現地ツアーに加え、登山、野鳥観察、ユキヒョウ観察、遺跡調査など専門性の高い特殊ツアーまで手配可能。旅行会社、政府機関、自治体、学校、NPO各団体のあらゆるニーズに応えます。</p>
+                            <div class="mt-auto pt-4 border-t border-white/15 text-xs font-semibold text-gold-400 flex items-center justify-between">
+                                <span>学術調査・特殊ツアー対応</span>
+                                <span><i class="fa-solid fa-arrow-rotate-left mr-1"></i> 戻る</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-brand-900 group-hover:text-gold-400 transition-colors">
-                            <i class="fa-solid fa-headset"></i>
+                <div class="strength-flip-card" role="button" tabindex="0" aria-pressed="false" aria-label="お問合せからご帰国まで安心のトータルサポートの詳細を表示" onclick="toggleStrengthCard(this)" onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); toggleStrengthCard(this); }">
+                    <div class="strength-flip-inner">
+                        <div class="strength-card-face strength-card-front">
+                            <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gold-600 uppercase tracking-wider">Strength 03</span>
+                            <h3 class="font-serif text-xl font-bold text-gray-900 mt-1">お問合せからご帰国まで<br>安心のトータルサポート</h3>
+                            <div class="mt-auto pt-4 border-t border-gray-100 text-xs font-semibold text-brand-900 flex items-center justify-between">
+                                <span>クリックして詳細を見る</span>
+                                <i class="fa-solid fa-arrow-rotate-right text-gold-600"></i>
+                            </div>
                         </div>
-                        <span class="text-xs font-bold text-gold-600 uppercase tracking-wider">Strength 03</span>
-                        <h3 class="font-serif text-xl font-bold text-gray-900 mt-1 mb-4">
-                            お問合せからご帰国まで<br>安心のトータルサポート
-                        </h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            ツアー企画検討中の旅行会社ご担当者様、是非一度ご相談ください。企画提案から催行確定、現地でのツアー実施、ご帰国までトータルに手配サポート。お客様に真に喜ばれるモンゴルの旅を伴走いたします。
-                        </p>
-                    </div>
-                    <div class="mt-8 pt-4 border-t border-gray-100 text-xs font-semibold text-brand-900 flex items-center justify-between">
-                        <span>企画〜催行〜帰国後フォロー</span>
-                        <i class="fa-solid fa-circle-check text-gold-600"></i>
+                        <div class="strength-card-face strength-card-back">
+                            <div class="flex items-center justify-between mb-5">
+                                <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Strength 03</span>
+                                <i class="fa-solid fa-headset text-gold-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold leading-snug">お問合せからご帰国まで安心のトータルサポート</h3>
+                            <p class="text-sm text-gray-100 leading-relaxed mt-4">ツアー企画検討中の旅行会社ご担当者様、是非一度ご相談ください。企画提案から催行確定、現地でのツアー実施、ご帰国までトータルに手配サポート。お客様に真に喜ばれるモンゴルの旅を伴走いたします。</p>
+                            <div class="mt-auto pt-4 border-t border-white/15 text-xs font-semibold text-gold-400 flex items-center justify-between">
+                                <span>企画〜催行〜帰国後フォロー</span>
+                                <span><i class="fa-solid fa-arrow-rotate-left mr-1"></i> 戻る</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1187,7 +1300,7 @@
             { label: 'Air Ticket Booking', title: 'モンゴル関連 航空券手配事業', description: 'MIAT, Aero Mongolia, United Airlines, Hunnu Air等', icon: 'fa-plane-departure' },
             { label: 'Mongolian Rail Ticket Booking', title: 'モンゴル国営鉄道・シベリア鉄道手配', description: '国際・国内鉄道切符手配、ホテル等へのデリバリー対応', icon: 'fa-train' },
             { label: 'Rent Car Service', title: 'モンゴル専用車・バス手配事業', description: '45人乗り大型〜Haice、4WDジープ・セダンまで完備', icon: 'fa-van-shuttle' },
-            { label: 'モンゴル専門 BtoB ランドオペレーター', title: 'モンゴル手配を確かな経験と現地ネットワークで高品質にサポートします。', description: '企画から予約、現地手配・緊急対応まで安心してお任せください。', icon: 'fa-shield-halved' }
+            { label: 'モンゴル専門 BtoB ランドオペレーター', title: 'モンゴル手配を確かな経験と現地ネットワークで高品質にサポート!', description: '企画から予約、現地手配・緊急対応まで安心してお任せください。', icon: 'fa-shield-halved' }
         ];
         let activeHeroSlide = 0;
         let heroTimer;
@@ -1199,6 +1312,7 @@
             heroDots.forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === activeHeroSlide)));
             heroLabel.textContent = content.label;
             heroTitle.innerHTML = content.title;
+            heroTitle.classList.toggle('hero-title-compact', activeHeroSlide === 4);
             heroDescription.textContent = content.description;
             heroIcon.className = `fa-solid ${content.icon}`;
             heroCount.textContent = `${String(activeHeroSlide + 1).padStart(2, '0')} / 05`;
@@ -1233,6 +1347,12 @@
             const activeButton = Array.from(buttons).find(btn => btn.getAttribute('onclick')?.includes(`'${tabId}'`));
             activeButton?.classList.add('active');
             activeButton?.classList.remove('text-gray-600');
+        }
+
+        // Flip the strengths cards with mouse, touch, or keyboard input.
+        function toggleStrengthCard(card) {
+            const isFlipped = card.classList.toggle('is-flipped');
+            card.setAttribute('aria-pressed', String(isFlipped));
         }
 
         // Policy Modals
