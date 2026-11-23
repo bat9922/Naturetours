@@ -220,8 +220,8 @@
                 
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-12 h-12 bg-brand-900 rounded-lg flex items-center justify-center text-gold-400 shadow-md group-hover:scale-105 transition-transform duration-300">
-                        <i class="fa-solid fa-mountain-sun text-2xl"></i>
+                    <div class="w-24 h-14 sm:w-28 sm:h-16 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/images/nature-tours-logo.png" alt="Nature Tours ロゴ" class="h-full w-full object-contain" width="1699" height="926">
                     </div>
                     <div>
                         <div class="font-serif font-bold text-xl sm:text-2xl text-brand-900 tracking-tight">株式会社ネイチャーツアーズ</div>
@@ -941,32 +941,36 @@
                     
                     <div class="space-y-4 text-gray-700 text-sm leading-relaxed font-normal">
                         <p>
-                            モンゴル観光業に関心をお持ちいただき、弊社のホームページへお越しいただき誠にありがとうございます。
+                            モンゴル観光業に関心をお寄せいただき、また弊社のホームページへお越しいただき、誠にありがとうございます。
                         </p>
                         <p>
-                            我々株式会社ネイチャーツアーズは若い企業ではありますが、スタッフは25年のモンゴル旅行業経験があるほか、モンゴル日本観光協会初代会長を務め、モンゴル政府観光局とも深い交流があります。
+                            株式会社ネイチャーツアーズは設立から日の浅い企業ではございますが、スタッフはモンゴル現地の旅行会社で25年の勤務経験を有しております。
                         </p>
                         <p>
-                            これまでの経験を活かし、モンゴル旅行商品提案やツアー手配のお手伝いができる信頼性の高いランドオペレーターとして、旅行会社の皆様に寄り添ったより身近な距離からサポートできればと思っております。
+                            これまでの経験とネットワークを活かし、モンゴル旅行商品の企画提案から現地ツアーの手配までを担う信頼性の高いランドオペレーターとして、旅行会社の皆様に寄り添い、より身近な距離でサポートさせていただきたいと考えております。
                         </p>
                         <p class="italic border-l-2 border-gold-500 pl-4 text-gray-800">
-                            “モンゴルの自然・文化・遊牧民とともに歩む、環境配慮のリーディングカンパニーへ” という理想の実現に向かって、両国の観光業に貢献できる商品開発とサービス提供のため日々努力して参ります。
+                            「モンゴルの自然・文化・遊牧民とともに歩む、環境配慮のリーディングカンパニーへ」というビジョンの実現に向け、両国の観光業の発展に貢献できる商品開発とサービス提供に、日々邁進して参ります。
                         </p>
                     </div>
 
                     <div class="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                         <div>
                             <div class="text-xs text-gray-500">代表取締役</div>
-                            <div class="font-serif font-bold text-lg text-brand-900">バトゾリグ・バルジンニャム <span class="text-xs font-sans text-gray-600 font-normal">(Batzorig Baljinnyam)</span></div>
+                            <div class="font-serif font-bold text-lg text-brand-900">バトゾリグ・バルジンニャム</div>
+                            <div class="text-xs font-sans text-gray-600">Batzorig Baljinnyam</div>
                         </div>
-                        <div class="text-xs text-gold-700 font-semibold">株式会社ネイチャーツアーズ</div>
+                        <img src="assets/images/nature-tours-logo.png" alt="Nature Tours ロゴ" class="h-16 w-28 shrink-0 object-contain" width="1699" height="926">
                     </div>
                 </div>
 
                 <!-- Company Profile Table Section -->
                 <div id="company" class="lg:col-span-5 bg-white p-8 rounded-3xl shadow-sm border border-gray-200">
                     <span class="text-gold-600 font-bold text-xs uppercase tracking-widest block mb-1">Overview</span>
-                    <h2 class="font-serif text-2xl font-bold text-brand-900 mb-6">会社概要</h2>
+                    <div class="mb-6 flex items-center gap-4">
+                        <h2 class="font-serif text-2xl font-bold text-brand-900">会社概要</h2>
+                        <img src="assets/images/nature-tours-logo.png" alt="Nature Tours ロゴ" class="h-16 w-28 shrink-0 object-contain" width="1699" height="926">
+                    </div>
 
                     <div class="divide-y divide-gray-100 text-xs sm:text-sm">
                         <div class="py-3 grid grid-cols-3 gap-2">
@@ -1070,35 +1074,38 @@
 
                 <!-- Interactive B2B Form -->
                 <div class="lg:col-span-8 bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-gray-200">
-                    <form id="inquiryForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <form id="inquiryForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <input type="hidden" name="access_key" value="88d700e1-8ea9-4bcf-b77b-112620e90e03">
+                        <input type="hidden" name="subject" value="Nature Tours ウェブサイトからのお問い合わせ">
+                        <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 mb-2">貴社名・団体名 <span class="text-red-500">*</span></label>
-                                <input type="text" required placeholder="例：〇〇トラベル株式会社" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
+                                <input type="text" name="company" required placeholder="例：〇〇トラベル株式会社" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
                             </div>
 
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 mb-2">ご担当者名 <span class="text-red-500">*</span></label>
-                                <input type="text" required placeholder="例：山田 太郎" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
+                                <input type="text" name="name" required placeholder="例：山田 太郎" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 mb-2">メールアドレス <span class="text-red-500">*</span></label>
-                                <input type="email" required placeholder="example@domain.jp" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
+                                <input type="email" name="email" required placeholder="example@domain.jp" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
                             </div>
 
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 mb-2">電話番号 <span class="text-red-500">*</span></label>
-                                <input type="tel" required placeholder="03-0000-0000" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
+                                <input type="tel" name="phone" required placeholder="03-0000-0000" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
                             </div>
                         </div>
 
                         <div>
                             <label class="block text-xs font-bold text-gray-700 mb-2">お問い合わせ項目 <span class="text-red-500">*</span></label>
-                            <select required class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none bg-white">
+                            <select name="inquiry_type" required class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none bg-white">
                                 <option value="">選択してください</option>
                                 <option value="地上手配・ツアー企画">モンゴル地上手配・ツアー企画のご相談</option>
                                 <option value="航空券手配">航空券手配（FIT/グループ）</option>
@@ -1112,7 +1119,7 @@
 
                         <div>
                             <label class="block text-xs font-bold text-gray-700 mb-2">お問い合わせ内容詳細 <span class="text-red-500">*</span></label>
-                            <textarea rows="5" required placeholder="想定人数、時期、希望ルート、特殊なご要望などご自由にご記入ください。" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none"></textarea>
+                            <textarea name="message" rows="5" required placeholder="想定人数、時期、希望ルート、特殊なご要望などご自由にご記入ください。" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none"></textarea>
                         </div>
 
                         <div class="text-center pt-2">
@@ -1206,9 +1213,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 
-                <div>
-                    <div class="font-serif font-bold text-lg text-white mb-1">株式会社ネイチャーツアーズ</div>
-                    <div class="text-[10px] text-gold-400 uppercase">NATURE TOURS Co., Ltd</div>
+                <div class="flex items-center gap-3">
+                    <img src="assets/images/nature-tours-logo.png" alt="Nature Tours ロゴ" class="h-14 w-24 object-contain" width="1699" height="926">
+                    <div>
+                        <div class="font-serif font-bold text-lg text-white mb-1">株式会社ネイチャーツアーズ</div>
+                        <div class="text-[10px] text-gold-400 uppercase">NATURE TOURS Co., Ltd</div>
+                    </div>
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-6 text-gray-300 text-xs">
@@ -1261,6 +1271,11 @@
         </div>
     </div>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" type="button" class="fixed bottom-6 right-6 z-40 hidden h-12 w-12 items-center justify-center rounded-full bg-brand-900 text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2" aria-label="ページ上部へ戻る" title="ページ上部へ戻る">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <!-- Success Toast Notification -->
     <div id="toast" class="fixed bottom-6 right-6 bg-brand-900 text-white px-6 py-4 rounded-xl shadow-2xl z-50 hidden flex items-center gap-3 border border-gold-500">
         <i class="fa-solid fa-circle-check text-gold-400 text-xl"></i>
@@ -1285,6 +1300,18 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        const updateBackToTopVisibility = () => {
+            backToTopButton.classList.toggle('hidden', window.scrollY < 400);
+            backToTopButton.classList.toggle('flex', window.scrollY >= 400);
+        };
+        window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+        updateBackToTopVisibility();
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Hero service carousel
@@ -1399,16 +1426,38 @@
             document.getElementById('lineModal').classList.add('hidden');
         }
 
-        // Contact Form Submission Simulation
-        function handleFormSubmit(e) {
+        // Contact Form Submission via Web3Forms
+        async function handleFormSubmit(e) {
             e.preventDefault();
+            const form = e.currentTarget;
+            const submitButton = form.querySelector('button[type="submit"]');
             const toast = document.getElementById('toast');
-            toast.classList.remove('hidden');
-            document.getElementById('inquiryForm').reset();
+            const originalButtonText = submitButton.innerHTML;
 
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 4000);
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>送信中...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { Accept: 'application/json' }
+                });
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    throw new Error(result.message || 'Form submission failed');
+                }
+
+                toast.classList.remove('hidden');
+                form.reset();
+                setTimeout(() => toast.classList.add('hidden'), 4000);
+            } catch (error) {
+                alert('送信に失敗しました。時間をおいて再度お試しください。');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            }
         }
 
         // Duplicate logo tiles for a seamless partner marquee
