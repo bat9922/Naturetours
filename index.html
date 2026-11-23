@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社ネイチャーツアーズ | モンゴル専門ランドオペレーター・BtoB旅行手配</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Noto Sans JP & Noto Serif JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            600: '#16a34a',
+                            800: '#166534',
+                            900: '#1b4332', /* Deep Steppe Green */
+                            dark: '#0f291e'
+                        },
+                        gold: {
+                            400: '#e5ab58',
+                            500: '#d4a373', /* Nomadic Ochre/Gold */
+                            600: '#c58b2a',
+                            700: '#996715'
+                        },
+                        sand: '#fbf9f5'
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: #111111;
+        }
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transform: scale(1.04);
+            transition: opacity 700ms ease, transform 7000ms ease;
+            background-position: center;
+            background-size: cover;
+            pointer-events: none;
+        }
+        .hero-slide.is-active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .hero-slide:nth-child(5) {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: #111111;
+        }
+        .hero-dot[aria-current="true"] {
+            width: 2rem;
+            background-color: #e5ab58;
+        }
+        .hero-title-compact {
+            font-size: clamp(1rem, 2.1vw, 1.875rem);
+            letter-spacing: -0.04em;
+        }
+        @media (min-width: 640px) {
+            .hero-title-compact { white-space: nowrap; }
+        }
+        .pattern-overlay {
+            background-image: radial-gradient(rgba(212, 163, 115, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .tab-btn.active {
+            border-color: #c58b2a;
+            color: #1b4332;
+            background-color: #fbf9f5;
+            font-weight: 700;
+        }
+        .strength-flip-card {
+            min-height: 24rem;
+            cursor: pointer;
+            perspective: 1200px;
+        }
+        .strength-flip-card:focus-visible {
+            outline: 3px solid #c58b2a;
+            outline-offset: 4px;
+            border-radius: 1rem;
+        }
+        .strength-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 24rem;
+            transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .strength-flip-card.is-flipped .strength-flip-inner {
+            transform: rotateY(180deg);
+        }
+        .strength-card-face {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            border-radius: 1rem;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .strength-card-front {
+            background: #ffffff;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 1px 3px rgba(15, 41, 30, 0.08);
+        }
+        .strength-card-back {
+            transform: rotateY(180deg);
+            background: #1b4332;
+            color: #ffffff;
+            box-shadow: 0 16px 32px rgba(15, 41, 30, 0.22);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .strength-flip-inner { transition: none; }
+        }
+        .partner-marquee {
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+        }
+        .partner-marquee-track {
+            display: flex;
+            gap: 1rem;
+            width: max-content;
+            animation: partner-marquee-scroll 90s linear infinite;
+        }
+        .partner-marquee-track > div {
+            flex: 0 0 10rem;
+            height: 6rem !important;
+            padding: 0.75rem 1rem 1.5rem !important;
+            background: #ffffff !important;
+            border-color: #e5e7eb !important;
+            box-shadow: 0 1px 3px rgba(15, 41, 30, 0.08);
+            position: relative;
+        }
+        .partner-marquee-track > div::after {
+            content: attr(title);
+            position: absolute;
+            bottom: 0.35rem;
+            left: 0.5rem;
+            right: 0.5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #4b5563;
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+        .partner-marquee-track img {
+            max-height: 3rem !important;
+            max-width: 100%;
+            filter: saturate(1.1) contrast(1.06) drop-shadow(0 1px 1px rgba(15, 41, 30, 0.14));
+        }
+        .partner-marquee-track img.h-9 {
+            height: 3rem !important;
+            width: 3rem !important;
+        }
+        .partner-marquee:hover .partner-marquee-track {
+            animation-play-state: paused;
+        }
+        @keyframes partner-marquee-scroll {
+            to { transform: translateX(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .partner-marquee-track { animation: none; }
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1b4332;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-sand leading-relaxed antialiased selection:bg-gold-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-brand- dark text-gold-400 text-xs sm:text-sm py-2 px-4 bg-brand-900 border-b border-gold-600/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-2 text-center sm:text-left">
+                <span class="bg-gold-600 text-white text-xs px-2 py-0.5 rounded font-bold">最新情報</span>
+                <span class="text-gray-200">【2024～2028モンゴル訪問年・GO MONGOLIA】 &amp; 【日本・モンゴル外交関係樹立55周年】記念ツアー企画受付中</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs">
+                <a href="tel:07091819922" class="hover:text-white transition-colors flex items-center gap-1 font-semibold">
+                    <i class="fa-solid fa-phone"></i> TEL: 070-9181-9922
+                </a>
+                <span class="text-gray-500">|</span>
+                <span>営業時間: 月〜金 9:00〜18:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-24 h-14 sm:w-28 sm:h-16 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/images/nature-tours-logo.png" alt="Nature Tours ロゴ" class="h-full w-full object-contain" width="1699" height="926">
+                    </div>
+                    <div>
+                        <div class="font-serif font-bold text-xl sm:text-2xl text-brand-900 tracking-tight">株式会社ネイチャーツアーズ</div>
+                        <div class="text-[10px] sm:text-xs text-gold-600 font-semibold tracking-wider uppercase">NATURE TOURS Co., Ltd</div>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-gray-700">
+                    <a href="#home" class="hover:text-brand-900 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">ホーム</a>
+                    <a href="#strengths" class="hover:text-brand-900 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">弊社の強み</a>
+                    <a href="#services" class="hover:text-brand-900 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">事業内容</a>
+                    <a href="#philosophy" class="hover:text-brand-900 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">企業理念</a>
+                    <a href="#company" class="hover:text-brand-900 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">会社概要</a>
+                    <a href="#message" class="hover:text-brand-900 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">代表メッセージ</a>
+                </nav>
+
+                <!-- Header Action Buttons -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="#contact" class="bg-brand-900 hover:bg-brand-800 text-white font-medium px-5 py-2.5 rounded-lg shadow-sm hover:shadow transition-all duration-300 flex items-center gap-2 text-sm">
+                        <i class="fa-regular fa-envelope"></i> BtoBお問合せ
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-brand-900 hover:bg-gray-100 focus:outline-none" aria-label="Toggle Navigation">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900">ホーム</a>
+            <a href="#strengths" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900">弊社の強み</a>
+            <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900">事業内容</a>
+            <a href="#philosophy" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900">企業理念</a>
+            <a href="#company" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900">会社概要</a>
+            <a href="#message" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-900">代表メッセージ</a>
+            <a href="#contact" class="mobile-nav-link block text-center bg-brand-900 text-white px-4 py-2.5 rounded-lg font-medium shadow">お問い合わせフォーム</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg relative min-h-[620px] flex items-center text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div id="hero-slides" class="absolute inset-0" aria-hidden="true">
+            <div class="hero-slide is-active" style="background-image: url('assets/images/ulaanbaatar-city.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/ulaanbaatar-airport.jpg?v=20261121-2');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/mongolian-railway.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/car-mongolia-hero.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/mongolian-star.jpg');"></div>
+        </div>
+        <div class="absolute inset-0 pattern-overlay opacity-30 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto w-full relative z-10">
+            <div class="max-w-7xl">
+                <!-- Subtitle Badge -->
+                <div class="inline-flex items-center gap-2 bg-gold-600/30 backdrop-blur-md border border-gold-500/50 px-4 py-1.5 rounded-full text-gold-400 font-medium text-sm mb-6">
+                    <i id="hero-icon" class="fa-solid fa-hotel"></i> <span id="hero-label">BtoB Hotel Booking</span>
+                </div>
+                
+                <!-- Main Catchphrase -->
+                <h1 id="hero-title" class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6 tracking-normal">
+                    ウランバートル市内ホテル予約
+                </h1>
+                
+                <!-- Subhead -->
+                <p id="hero-description" class="text-lg sm:text-xl text-gray-200 font-light mb-8 leading-relaxed">
+                    ビジネス〜5つ星高級ホテル、地方都市ホテル手配
+                </p>
+
+                <!-- Hero CTA Buttons -->
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="bg-gold-500 hover:bg-gold-600 text-brand-dark font-bold px-8 py-4 rounded-xl shadow-lg transition-all duration-300 flex items-center gap-2 text-base">
+                        お見積り・企画のご相談 <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#services" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-medium px-6 py-4 rounded-xl border border-white/30 transition-all duration-300 flex items-center gap-2 text-base">
+                        事業手配内容を見る <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-14 left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 z-20">
+            <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+                <p id="hero-count" class="text-xs font-semibold tracking-[0.2em] text-white/80">01 / 05</p>
+                <div class="flex items-center gap-2" role="tablist" aria-label="Hero services">
+                    <button type="button" class="hero-dot h-1.5 w-6 rounded-full bg-white/50 transition-all" aria-label="BtoB Hotel Booking" aria-current="true" data-hero-slide="0"></button>
+                    <button type="button" class="hero-dot h-1.5 w-6 rounded-full bg-white/50 transition-all" aria-label="Air Ticket Booking" aria-current="false" data-hero-slide="1"></button>
+                    <button type="button" class="hero-dot h-1.5 w-6 rounded-full bg-white/50 transition-all" aria-label="Mongolian Rail Ticket Booking" aria-current="false" data-hero-slide="2"></button>
+                    <button type="button" class="hero-dot h-1.5 w-6 rounded-full bg-white/50 transition-all" aria-label="Rent Car Service" aria-current="false" data-hero-slide="3"></button>
+                    <button type="button" class="hero-dot h-1.5 w-6 rounded-full bg-white/50 transition-all" aria-label="NATURE TOURS" aria-current="false" data-hero-slide="4"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Bottom Gradient Curve -->
+        <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-sand to-transparent"></div>
+    </section>
+
+    <!-- Core 6 Service Highlights Bar -->
+    <section class="py-12 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-600">Core Services</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-900 mt-1">ワンストップ手配事業</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 1 -->
+                <a href="#services" onclick="switchTab('tab-1')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル専門地上手配事業の詳細を見る">
+                    <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-semibold text-gold-700 block uppercase">Land Operator Service</span>
+                        <h3 class="font-bold text-gray-900 text-base">モンゴル専門地上手配事業</h3>
+                        <p class="text-xs text-gray-600 mt-1">FIT、団体、MICE、特殊テーマツアーまで総合手配</p>
+                    </div>
+                </a>
+
+                <!-- 2: Hotel & Ger Camp -->
+                <a href="#services" onclick="switchTab('tab-3')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="ホテル＆ゲルキャンプ手配の詳細を見る">
+                    <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center gap-1 text-base shrink-0">
+                        <i class="fa-solid fa-hotel"></i>
+                        <i class="fa-solid fa-campground text-sm"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-semibold text-gold-700 block uppercase">Hotel &amp; Ger Camp Booking</span>
+                        <h3 class="font-bold text-gray-900 text-base">ホテル＆ゲルキャンプ手配</h3>
+                        <p class="text-xs text-gray-600 mt-1">市内・地方ホテル、ゲルキャンプの手配</p>
+                    </div>
+                </a>
+
+                <!-- 3 -->
+                <a href="#services" onclick="switchTab('tab-2')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル関連 航空券手配事業の詳細を見る">
+                    <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-plane-departure"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-semibold text-gold-700 block uppercase">Air Ticket Booking</span>
+                        <h3 class="font-bold text-gray-900 text-base">モンゴル航空券手配事業</h3>
+                        <p class="text-xs text-gray-600 mt-1">MIAT, Aero Mongolia, United Airlines, Hunnu Air等</p>
+                    </div>
+                </a>
+
+                <!-- 4 -->
+                <a href="#services" onclick="switchTab('tab-5')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル国営鉄道・シベリア鉄道手配の詳細を見る">
+                    <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-train"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-semibold text-gold-700 block uppercase">Mongolian Rail Ticket Booking</span>
+                        <h3 class="font-bold text-gray-900 text-base">モンゴル国営鉄道・シベリア鉄道手配</h3>
+                        <p class="text-xs text-gray-600 mt-1">鉄道切符手配、ホテルへのデリバリー対応</p>
+                    </div>
+                </a>
+
+                <!-- 5 -->
+                <a href="#services" onclick="switchTab('tab-6')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="モンゴル専用車・バス手配事業の詳細を見る">
+                    <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-van-shuttle"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-semibold text-gold-700 block uppercase">Rent Car Service</span>
+                        <h3 class="font-bold text-gray-900 text-base">モンゴル専用車・バス手配事業</h3>
+                        <p class="text-xs text-gray-600 mt-1">バス、Haice、4WDジープ・セダンまで完備</p>
+                    </div>
+                </a>
+
+                <!-- 6 -->
+                <a href="#services" onclick="switchTab('tab-7')" class="p-5 rounded-xl border border-gray-100 bg-sand hover:shadow-md hover:-translate-y-0.5 transition-all flex items-start gap-4 group" aria-label="DMC・政府関連事業の詳細を見る">
+                    <div class="w-12 h-12 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-building-flag"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-semibold text-gold-700 block uppercase">DMC &amp; Government Relations</span>
+                        <h3 class="font-bold text-gray-900 text-base">DMC・政府関連事業</h3>
+                        <p class="text-xs text-gray-600 mt-1">政府観光局連携・観光プロモーション支援</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strengths / Advantages Section -->
+    <section id="strengths" class="py-20 bg-sand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-bold text-xs uppercase tracking-widest">Why Choose Us</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-900 mt-2">弊社の強み・サポート体制</h2>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+                <p class="text-gray-600 mt-4 text-sm sm:text-base">
+                    経験豊富なモンゴル人スタッフと全土の強いネットワークで、旅行会社様のご要望にお応えします。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="strength-flip-card" role="button" tabindex="0" aria-pressed="false" aria-label="モンゴル全土のネットワークと経験豊富なスタッフの詳細を表示" onclick="toggleStrengthCard(this)" onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); toggleStrengthCard(this); }">
+                    <div class="strength-flip-inner">
+                        <div class="strength-card-face strength-card-front">
+                            <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gold-600 uppercase tracking-wider">Strength 01</span>
+                            <h3 class="font-serif text-xl font-bold text-gray-900 mt-1">モンゴル全土のネットワークと<br>経験豊富なスタッフ</h3>
+                            <div class="mt-auto pt-4 border-t border-gray-100 text-xs font-semibold text-brand-900 flex items-center justify-between">
+                                <span>クリックして詳細を見る</span>
+                                <i class="fa-solid fa-arrow-rotate-right text-gold-600"></i>
+                            </div>
+                        </div>
+                        <div class="strength-card-face strength-card-back">
+                            <div class="flex items-center justify-between mb-5">
+                                <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Strength 01</span>
+                                <i class="fa-solid fa-users-gear text-gold-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold leading-snug">モンゴル全土のネットワークと経験豊富なスタッフ</h3>
+                            <p class="text-sm text-gray-100 leading-relaxed mt-4">モンゴルツアー25年の経験と実績を持つモンゴル人スタッフがお手伝いします。複雑なご要望や特殊なツアーにも柔軟に対応し、御社だけのオーダーメイド手配を行います。FITから大団体ツアーまでお気軽にご相談ください。</p>
+                            <div class="mt-auto pt-4 border-t border-white/15 text-xs font-semibold text-gold-400 flex items-center justify-between">
+                                <span>FIT / 団体・オーダーメイド対応</span>
+                                <span><i class="fa-solid fa-arrow-rotate-left mr-1"></i> 戻る</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="strength-flip-card" role="button" tabindex="0" aria-pressed="false" aria-label="モンゴル特化BtoB専門のワンストップ・ソリューションの詳細を表示" onclick="toggleStrengthCard(this)" onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); toggleStrengthCard(this); }">
+                    <div class="strength-flip-inner">
+                        <div class="strength-card-face strength-card-front">
+                            <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+                                <i class="fa-solid fa-diagram-project"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gold-600 uppercase tracking-wider">Strength 02</span>
+                            <h3 class="font-serif text-xl font-bold text-gray-900 mt-1">モンゴル特化BtoB専門の<br>ワンストップ・ソリューション</h3>
+                            <div class="mt-auto pt-4 border-t border-gray-100 text-xs font-semibold text-brand-900 flex items-center justify-between">
+                                <span>クリックして詳細を見る</span>
+                                <i class="fa-solid fa-arrow-rotate-right text-gold-600"></i>
+                            </div>
+                        </div>
+                        <div class="strength-card-face strength-card-back">
+                            <div class="flex items-center justify-between mb-5">
+                                <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Strength 02</span>
+                                <i class="fa-solid fa-diagram-project text-gold-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold leading-snug">モンゴル特化BtoB専門のワンストップ・ソリューション</h3>
+                            <p class="text-sm text-gray-100 leading-relaxed mt-4">車、ガイド、送迎、宿泊、現地ツアーに加え、登山、野鳥観察、ユキヒョウ観察、遺跡調査など専門性の高い特殊ツアーまで手配可能。旅行会社、政府機関、自治体、学校、NPO各団体のあらゆるニーズに応えます。</p>
+                            <div class="mt-auto pt-4 border-t border-white/15 text-xs font-semibold text-gold-400 flex items-center justify-between">
+                                <span>学術調査・特殊ツアー対応</span>
+                                <span><i class="fa-solid fa-arrow-rotate-left mr-1"></i> 戻る</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="strength-flip-card" role="button" tabindex="0" aria-pressed="false" aria-label="お問合せからご帰国まで安心のトータルサポートの詳細を表示" onclick="toggleStrengthCard(this)" onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); toggleStrengthCard(this); }">
+                    <div class="strength-flip-inner">
+                        <div class="strength-card-face strength-card-front">
+                            <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gold-600 uppercase tracking-wider">Strength 03</span>
+                            <h3 class="font-serif text-xl font-bold text-gray-900 mt-1">お問合せからご帰国まで<br>安心のトータルサポート</h3>
+                            <div class="mt-auto pt-4 border-t border-gray-100 text-xs font-semibold text-brand-900 flex items-center justify-between">
+                                <span>クリックして詳細を見る</span>
+                                <i class="fa-solid fa-arrow-rotate-right text-gold-600"></i>
+                            </div>
+                        </div>
+                        <div class="strength-card-face strength-card-back">
+                            <div class="flex items-center justify-between mb-5">
+                                <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Strength 03</span>
+                                <i class="fa-solid fa-headset text-gold-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold leading-snug">お問合せからご帰国まで安心のトータルサポート</h3>
+                            <p class="text-sm text-gray-100 leading-relaxed mt-4">ツアー企画検討中の旅行会社ご担当者様、是非一度ご相談ください。企画提案から催行確定、現地でのツアー実施、ご帰国までトータルに手配サポート。お客様に真に喜ばれるモンゴルの旅を伴走いたします。</p>
+                            <div class="mt-auto pt-4 border-t border-white/15 text-xs font-semibold text-gold-400 flex items-center justify-between">
+                                <span>企画〜催行〜帰国後フォロー</span>
+                                <span><i class="fa-solid fa-arrow-rotate-left mr-1"></i> 戻る</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Details Interactive Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-gold-600 font-bold text-xs uppercase tracking-widest">Our Business Details</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-900 mt-2">事業内容詳細</h2>
+                <p class="text-gray-600 mt-3 text-sm sm:text-base">
+                    各事業カテゴリを選択して詳細な手配内容をご確認いただけます。
+                </p>
+            </div>
+
+            <!-- Service Navigation Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10 border-b border-gray-200 pb-4" id="service-tabs">
+                <button onclick="switchTab('tab-1')" class="tab-btn active px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all">
+                    <i class="fa-solid fa-earth-asia mr-1.5"></i> 地上手配 & 訪日手配
+                </button>
+                <button onclick="switchTab('tab-2')" class="tab-btn px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all text-gray-600">
+                    <i class="fa-solid fa-plane mr-1.5"></i> 航空券手配
+                </button>
+                <button onclick="switchTab('tab-3')" class="tab-btn px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all text-gray-600">
+                    <i class="fa-solid fa-hotel mr-1.5"></i> ホテル＆ゲルキャンプ手配
+                </button>
+                <button onclick="switchTab('tab-5')" class="tab-btn px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all text-gray-600">
+                    <i class="fa-solid fa-train-subway mr-1.5"></i> シベリア鉄道切符手配
+                </button>
+                <button onclick="switchTab('tab-6')" class="tab-btn px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all text-gray-600">
+                    <i class="fa-solid fa-bus mr-1.5"></i> バス・専用車手配
+                </button>
+                <button onclick="switchTab('tab-7')" class="tab-btn px-4 py-3 rounded-lg text-sm font-medium border border-gray-200 hover:border-gold-500 transition-all text-gray-600">
+                    <i class="fa-solid fa-building-flag mr-1.5"></i> DMC・政府関連事業
+                </button>
+            </div>
+
+            <!-- Tab Contents Container -->
+            <div class="bg-sand rounded-2xl p-6 sm:p-10 border border-gray-200 shadow-sm">
+                
+                <!-- Tab 1: 地上手配 & 訪日手配 -->
+                <div id="tab-1" class="tab-content block">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        <div class="lg:col-span-12">
+                            <span class="inline-block bg-brand-900 text-gold-400 text-xs px-3 py-1 rounded-full font-bold mb-3">地上手配エキスパート</span>
+                            <h3 class="font-serif text-2xl font-bold text-brand-900 mb-4">モンゴル地上手配（ランドオペレーター）& モンゴルからの訪日手配業務</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                                旅行業界のBtoB分野で常に旅行会社様に寄り添い、<span class="bg-gold-400/20 text-brand-900 px-1.5 py-0.5 rounded font-medium">「モンゴルのことならネイチャーツアーズに任せよう」</span>と言われる信頼性の高い企業を目指しております。旅行会社様からの<span class="bg-gold-400/20 text-brand-900 px-1.5 py-0.5 rounded font-medium">「こんなツアーありますか」「これは可能ですか」</span>等のご質問に応え、旅行プロの期待を超える商品提供と事業拡大をサポートします。
+                            </p>
+                            <!-- Sub Items -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-white p-4 rounded-xl border border-gray-100 h-full">
+                                    <h4 class="font-bold text-gray-900 text-sm mb-2 text-brand-900 flex items-center gap-2">
+                                        <i class="fa-solid fa-check text-gold-600"></i> モンゴル現地対応カテゴリ
+                                    </h4>
+                                    <div class="flex flex-wrap gap-2 text-xs">
+                                        <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md font-medium">MICE</span>
+                                        <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md font-medium">現地各種ツアー手配</span>
+                                        <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md font-medium">個人旅行(FIT)</span>
+                                        <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md font-medium">団体旅行</span>
+                                        <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md font-medium">視察・社員旅行・研修</span>
+                                        <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md font-medium">教育・学校交流</span>
+                                        <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md font-medium">特殊ツアー（野鳥・遺跡・昆虫・登山等）</span>
+                                        <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md font-medium">パーツ手配（ホテル・車・ガイド等）</span>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-4 rounded-xl border border-gray-100 h-full">
+                                    <h4 class="font-bold text-gray-900 text-sm mb-2 text-brand-900 flex items-center gap-2">
+                                        <i class="fa-solid fa-plane-arrival text-gold-600"></i> モンゴル人観光客の訪日手配（インバウンド）
+                                    </h4>
+                                    <p class="text-xs text-gray-600 leading-relaxed">
+                                        モンゴル人の訪日ツアー各種パーツ手配（ホテル、バス、ガイド等）も取り扱っております。富士山、東京、京都、温泉旅行、ディズニーランド旅行をはじめ、学校交流、展示会旅行、視察旅行、社員旅行、家族旅行など幅広い分野で対応いたします。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <a href="https://mongoru.jp/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                        <i class="fa-solid fa-map-location-dot"></i>
+                                    </span>
+                                    <span>モンゴル豊富な現地ツアー情報 <span class="text-gold-400">mongoru.jpへ</span></span>
+                                    <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Tab 2: 航空券手配 -->
+                <div id="tab-2" class="tab-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7">
+                            <span class="inline-block bg-brand-900 text-gold-400 text-xs px-3 py-1 rounded-full font-bold mb-3">直行便・経由便対応</span>
+                            <h3 class="font-serif text-2xl font-bold text-brand-900 mb-4">モンゴル航空券手配事業</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                                モンゴルへの直行便を運航している成田発着、関空発着の各航空会社の航空券手配を行っております。FITからグループ・大団体まで確実にお手配いたします。日本地方都市から韓国経由、北京経由の航空券も対応可能です。
+                            </p>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                                <div class="bg-white p-3 rounded-xl border flex flex-col items-center justify-center gap-2" title="MIATモンゴル航空">
+                                    <img src="assets/images/miat-mongolian-airlines.png" alt="MIATモンゴル航空" class="h-10 w-full object-contain">
+                                    <span class="text-center text-[11px] font-bold text-brand-900">MIATモンゴル航空</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border flex flex-col items-center justify-center gap-2" title="アエロモンゴリア航空">
+                                    <img src="assets/images/aero-mongolia.png" alt="アエロモンゴリア航空" class="h-10 w-full object-contain">
+                                    <span class="text-center text-[11px] font-bold text-brand-900">アエロモンゴリア航空</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border flex flex-col items-center justify-center gap-2" title="ユナイテッド航空">
+                                    <img src="assets/images/united-airlines.png" alt="ユナイテッド航空" class="h-10 w-full object-contain">
+                                    <span class="text-center text-[11px] font-bold text-brand-900">ユナイテッド航空</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border flex flex-col items-center justify-center gap-2" title="フンヌエアー航空">
+                                    <img src="assets/images/hunnu-air.png" alt="フンヌエアー航空" class="h-10 w-full object-contain">
+                                    <span class="text-center text-[11px] font-bold text-brand-900">フンヌエアー航空</span>
+                                </div>
+                            </div>
+                            <a href="https://mongoru.jp/ticket-info-2/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                    <i class="fa-solid fa-plane-departure"></i>
+                                </span>
+                                <span>モンゴル航空券手配情報</span>
+                                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-200">
+                            <div class="flex items-center gap-3 text-brand-900 mb-3">
+                                <i class="fa-solid fa-ticket text-2xl text-gold-600"></i>
+                                <h4 class="font-bold text-base">航空券手配の特徴</h4>
+                            </div>
+                            <ul class="text-xs text-gray-600 space-y-2.5">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> 成田・関空直行便の手配ブロック確保</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> 地方空港からの仁川（韓国）/北京経由ルート提案</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> グループ発券・変更対応サポート</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: ホテル＆ゲルキャンプ手配 -->
+                <div id="tab-3" class="tab-content hidden">
+                    <div class="space-y-10">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7">
+                            <span class="inline-block bg-brand-900 text-gold-400 text-xs px-3 py-1 rounded-full font-bold mb-3">確実な手配力</span>
+                            <h3 class="font-serif text-2xl font-bold text-brand-900 mb-4">ウランバートル市内・地方都市ホテル予約</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                                ウランバートル市内のビジネスホテルから5つ星ラグジュアリーホテルまで、豊富なホテル情報とリーズナブルな価格で対応いたします。地方都市のホテル手配も網羅。ホテル単体だけでなく、「ホテル＋送迎」「ホテル＋日本語ガイド」などの組合せも自由自在です。
+                            </p>
+                            <a href="https://mongoru.jp/hotel-info/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                    <i class="fa-solid fa-hotel"></i>
+                                </span>
+                                <span>ウランバートルホテル予約情報</span>
+                                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-200">
+                            <h4 class="font-bold text-gray-900 text-sm mb-3">主な提携ホテル一覧</h4>
+                            <div class="flex flex-wrap gap-1.5 text-[11px] text-gray-700">
+                                <span class="bg-gray-100 px-2 py-1 rounded">東横INNウランバートル</span>
+                                <span class="bg-gray-100 px-2 py-1 rounded">TUUSHIN HOTEL</span>
+                                <span class="bg-gray-100 px-2 py-1 rounded">FLOWER HOTEL</span>
+                                <span class="bg-gray-100 px-2 py-1 rounded">CORPORATE HOTEL & CONVENTION CENTER</span>
+                                <span class="bg-gray-100 px-2 py-1 rounded">BAYANGOL HOTEL</span>
+                                <span class="bg-gray-100 px-2 py-1 rounded">GRAND HILL HOTEL</span>
+                                <span class="bg-gray-100 px-2 py-1 rounded">AURORA HOTEL</span>
+                                <span class="bg-gray-100 px-2 py-1 rounded">AMAR HOTEL</span>
+                                <span class="bg-gray-100 px-2 py-1 rounded">WORLD HOTEL MONGOLIA</span>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="border-t border-gray-200 pt-8">
+                            <div class="space-y-6">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <span class="inline-block bg-gold-600 text-white text-xs px-3 py-1 rounded-full font-bold mb-2">一押しリゾート</span>
+                                <h3 class="font-serif text-2xl font-bold text-brand-900">テレルジ国立公園 トメンハーンリゾート (TUMENKHAAN RESORT)</h3>
+                            </div>
+                            <span class="text-xs text-gray-500">ウランバートルから約70km（約2時間）</span>
+                        </div>
+
+                        <p class="text-gray-700 text-sm leading-relaxed">
+                            ウランバートル郊外のテレルジ国立公園へ向かうルートには、ナライハ市観光、チンギスハーン騎馬像、亀岩、チベット仏教のアリヤバル寺などモンゴルを代表する観光ルートが広がります。その奥深き大自然の中に位置するのが「トメンハーンリゾート」です。
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-xl border border-gray-100">
+                                <div class="text-gold-600 text-lg mb-2"><i class="fa-solid fa-person-hiking"></i></div>
+                                <h4 class="font-bold text-sm text-gray-900">豊富アクティビティ</h4>
+                                <p class="text-xs text-gray-600 mt-1">野鳥・昆虫観察、フラワーハイキング、ミニ登山、乗馬体験、遊牧民宅訪問</p>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-xl border border-gray-100">
+                                <div class="text-gold-600 text-lg mb-2"><i class="fa-solid fa-shirt"></i></div>
+                                <h4 class="font-bold text-sm text-gray-900">モンゴル文化体験</h4>
+                                <p class="text-xs text-gray-600 mt-1">伝統衣装デール着用記念撮影、モンゴル弓体験、縦文字（モンゴル文字）名前書き体験</p>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-xl border border-gray-100">
+                                <div class="text-gold-600 text-lg mb-2"><i class="fa-solid fa-star text-gold-500"></i></div>
+                                <h4 class="font-bold text-sm text-gray-900">評判の料理 & 星空観察</h4>
+                                <p class="text-xs text-gray-600 mt-1">好評の本格料理。光害がなく夜はホットドリンク付きでシート・布団を敷き満天の星空を堪能</p>
+                            </div>
+                        </div>
+                        <a href="https://tumenkhaan.mn/jp/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                <i class="fa-solid fa-campground"></i>
+                            </span>
+                            <span>テレルジ国立公園ゲルキャンプ予約情報</span>
+                            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </span>
+                        </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: シベリア鉄道予約 -->
+                <div id="tab-5" class="tab-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <div class="lg:col-span-7 space-y-4">
+                            <span class="inline-block bg-brand-900 text-gold-400 text-xs px-3 py-1 rounded-full font-bold">鉄道旅のワンストップ</span>
+                            <h3 class="font-serif text-2xl font-bold text-brand-900">モンゴル国営鉄道・シベリア鉄道切符予約</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                モンゴル国内長距離鉄道、北京発ウランバートル行き列車、ウランバートル発ロシア行き国際列車切符の手配に対応。切符はご滞在先ホテルへお届けするデリバリーサービスも完備。各クラス（КУПЕ 2等 / ОБЩИ / ПЛАЦКАРТ 3等）を取り扱っております。
+                            </p>
+
+                            <h4 class="font-bold text-sm text-brand-900 pt-2"><i class="fa-solid fa-train text-gold-600 mr-2"></i>鉄道旅の9つの魅力</h4>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                                <div class="bg-white p-2.5 rounded-lg border text-gray-700">1. リーズナブルな価格</div>
+                                <div class="bg-white p-2.5 rounded-lg border text-gray-700">2. 高い快適性</div>
+                                <div class="bg-white p-2.5 rounded-lg border text-gray-700">3. 地元の人々との出会い</div>
+                                <div class="bg-white p-2.5 rounded-lg border text-gray-700">4. 宿泊費の節約</div>
+                                <div class="bg-white p-2.5 rounded-lg border text-gray-700">5. 自由行動の選択肢</div>
+                                <div class="bg-white p-2.5 rounded-lg border text-gray-700">6. 環境にやさしい旅</div>
+                                <div class="bg-white p-2.5 rounded-lg border text-gray-700">7. 車窓の大自然・風景</div>
+                                <div class="bg-white p-2.5 rounded-lg border text-gray-700">8. 田舎村の風景鑑賞</div>
+                                <div class="bg-white p-2.5 rounded-lg border text-gray-700">9. 明確な時刻で予定が立て易い</div>
+                            </div>
+                            <a href="https://mongoru.jp/ticket-info-2/railway/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                    <i class="fa-solid fa-train"></i>
+                                </span>
+                                <span>モンゴルシベリア鉄道予約情報</span>
+                                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-200 flex flex-col justify-center">
+                            <i class="fa-solid fa-ticket-simple text-4xl text-gold-600 mb-3"></i>
+                            <h4 class="font-bold text-gray-900 text-base mb-2">現地パッケージの手配も一括対応</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                                シベリア鉄道切符手配と同時に、地方都市でのホテル予約、ガイド手配、専用車手配など現地パーツもトータルでご提供いたします。
+                            </p>
+                            <a href="#contact" class="bg-brand-900 text-white text-center py-2.5 rounded-lg text-xs font-bold hover:bg-brand-800 transition-colors">
+                                鉄道切符・空席照会
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 6: バス・専用車予約 -->
+                <div id="tab-6" class="tab-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 space-y-4">
+                            <span class="inline-block bg-brand-900 text-gold-400 text-xs px-3 py-1 rounded-full font-bold">車種ラインナップ豊富</span>
+                            <h3 class="font-serif text-2xl font-bold text-brand-900">バス・専用車手配（チャーター車）</h3>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                空港送迎、ホテル送迎、市内観光からモンゴル国内の長距離バス・専用車移動まで幅広く対応いたします。専用車と合わせたホテルやガイドの組み合わせも自由自在です。
+                            </p>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                                <div class="bg-white p-4 rounded-xl border">
+                                    <i class="fa-solid fa-bus text-brand-900 text-2xl mb-1"></i>
+                                    <div class="font-bold text-xs">大型バス</div>
+                                    <div class="text-[10px] text-gray-500">45座席</div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl border">
+                                    <i class="fa-solid fa-van-shuttle text-brand-900 text-2xl mb-1"></i>
+                                    <div class="font-bold text-xs">中型バス</div>
+                                    <div class="text-[10px] text-gray-500">24座席</div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl border">
+                                    <i class="fa-solid fa-car-side text-brand-900 text-2xl mb-1"></i>
+                                    <div class="font-bold text-xs">ハイエース</div>
+                                    <div class="text-[10px] text-gray-500">12人用 Hiace</div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl border">
+                                    <i class="fa-solid fa-truck-monster text-brand-900 text-2xl mb-1"></i>
+                                    <div class="font-bold text-xs">ジープ・セダン</div>
+                                    <div class="text-[10px] text-gray-500">悪路・少人数用</div>
+                                </div>
+                            </div>
+                            <a href="https://mongoru.jp/private-car/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-xl bg-brand-900 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-900/15 transition-all hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400">
+                                    <i class="fa-solid fa-van-shuttle"></i>
+                                </span>
+                                <span>モンゴル専用車・バス手配情報</span>
+                                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs transition-transform group-hover:translate-x-0.5">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-200">
+                            <h4 class="font-bold text-gray-900 text-sm mb-3">安全・快適な運行品質</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                                モンゴルの厳しい路面状況を熟知したベテランドライバーを配置。長距離移動も安心して任せられます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 7: DMC -->
+                <div id="tab-7" class="tab-content hidden">
+                    <div class="space-y-4">
+                        <span class="inline-block bg-gold-600 text-white text-xs px-3 py-1 rounded-full font-bold">モンゴル政府観光局連携</span>
+                        <h3 class="font-serif text-2xl font-bold text-brand-900">DMC (Destination Management Company) 事業</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-6 rounded-xl border border-gray-200 h-full">
+                                <p class="text-sm text-gray-700 leading-relaxed">
+                                    モンゴル政府は<span class="bg-gold-400/20 text-gold-700 px-1.5 py-0.5 rounded font-medium">【2024～2028モンゴル訪問年・GO MONGOLIA】</span>政策を打ち出し、観光産業の発展に注力しています。さらに2027年（令和9年）には<span class="bg-gold-400/20 text-gold-700 px-1.5 py-0.5 rounded font-medium">日本とモンゴルの外交関係樹立55周年</span>を迎えます。
+                                </p>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl border border-gray-200 h-full">
+                                <h4 class="font-bold text-brand-900 text-base mb-2">モンゴル観光業宣伝・イベント開催サポート業務</h4>
+                                <p class="text-xs text-gray-600 leading-relaxed">
+                                    主にモンゴル観光名所・デスティネーション、ゲルキャンプ、ホテル、各旅行社及び航空会社に対する紹介、イベント・プロモーション活動を通じて日本の旅行会社様にモンゴル観光を宣伝し、両国観光業発展の貢献を目指す。モンゴル政府観光局（MTO）、ウランバートル市観光局、モンゴル・日本観光協会等と協力していく。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate Philosophy Section -->
+    <section id="philosophy" class="py-20 bg-brand-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 pattern-overlay opacity-20 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-400 font-bold text-xs uppercase tracking-widest">Corporate Philosophy</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-2">企業理念</h2>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Vision Statement Box -->
+            <div class="bg-white/10 backdrop-blur-md border border-gold-500/40 p-8 sm:p-12 rounded-3xl text-center max-w-4xl mx-auto mb-16 shadow-2xl">
+                <span class="text-gold-400 text-xs font-bold uppercase tracking-widest block mb-2">理念スローガン</span>
+                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-relaxed">
+                    “モンゴルの自然・文化・遊牧民とともに歩む、<br class="hidden sm:inline">
+                    環境配慮のリーディングカンパニーへ”
+                </h3>
+            </div>
+
+            <!-- 4 Pillars Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Pillar 1: Nature -->
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors">
+                    <div class="w-12 h-12 bg-gold-500/20 text-gold-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <span class="text-xs text-gold-400 font-bold uppercase tracking-wider block">Pillar 01</span>
+                    <h4 class="font-serif text-xl font-bold text-white mt-1 mb-2">自然 <span class="text-xs font-normal text-gray-300">Nature</span></h4>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        草原や砂漠、水資源などの環境保全と負荷低減に取り組み、モンゴルの豊かな美しい自然を未来へ継承します。
+                    </p>
+                </div>
+
+                <!-- Pillar 2: Culture -->
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors">
+                    <div class="w-12 h-12 bg-gold-500/20 text-gold-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-landmark"></i>
+                    </div>
+                    <span class="text-xs text-gold-400 font-bold uppercase tracking-wider block">Pillar 02</span>
+                    <h4 class="font-serif text-xl font-bold text-white mt-1 mb-2">文化 <span class="text-xs font-normal text-gray-300">Culture</span></h4>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        モンゴルの伝統的な価値観や歴史・言語・芸術を尊重し、真の魅力を世界へ正しく伝えます。
+                    </p>
+                </div>
+
+                <!-- Pillar 3: Nomads -->
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors">
+                    <div class="w-12 h-12 bg-gold-500/20 text-gold-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-horse"></i>
+                    </div>
+                    <span class="text-xs text-gold-400 font-bold uppercase tracking-wider block">Pillar 03</span>
+                    <h4 class="font-serif text-xl font-bold text-white mt-1 mb-2">遊牧民 <span class="text-xs font-normal text-gray-300">Nomads</span></h4>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        遊牧民の生活や生業の持続可能性へ貢献し、地域社会とフェアな協働関係を築きます。
+                    </p>
+                </div>
+
+                <!-- Pillar 4: Leading Company -->
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors">
+                    <div class="w-12 h-12 bg-gold-500/20 text-gold-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <span class="text-xs text-gold-400 font-bold uppercase tracking-wider block">Pillar 04</span>
+                    <h4 class="font-serif text-xl font-bold text-white mt-1 mb-2">リーディングカンパニー <span class="text-xs font-normal text-gray-300">Leading Company</span></h4>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        業界を牽引する高い品質基準・イノベーション・信頼性を追求し、最高級の手配サービスを提示します。
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Representative Message & Company Profile -->
+    <section id="message" class="py-20 bg-sand border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
+                <!-- Message -->
+                <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-gray-200">
+                    <span class="text-gold-600 font-bold text-xs uppercase tracking-widest block mb-1">Top Message</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-900 mb-6">代表メッセージ</h2>
+                    
+                    <div class="space-y-4 text-gray-700 text-sm leading-relaxed font-normal">
+                        <p>
+                            モンゴル観光業に関心をお寄せいただき、また弊社のホームページへお越しいただき、誠にありがとうございます。
+                        </p>
+                        <p>
+                            株式会社ネイチャーツアーズは設立から日の浅い企業ではございますが、スタッフはモンゴル現地の旅行会社で25年の勤務経験を有しております。
+                        </p>
+                        <p>
+                            これまでの経験とネットワークを活かし、モンゴル旅行商品の企画提案から現地ツアーの手配までを担う信頼性の高いランドオペレーターとして、旅行会社の皆様に寄り添い、より身近な距離でサポートさせていただきたいと考えております。
+                        </p>
+                        <p class="italic border-l-2 border-gold-500 pl-4 text-gray-800">
+                            「モンゴルの自然・文化・遊牧民とともに歩む、環境配慮のリーディングカンパニーへ」というビジョンの実現に向け、両国の観光業の発展に貢献できる商品開発とサービス提供に、日々邁進して参ります。
+                        </p>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <div>
+                            <div class="text-xs text-gray-500">代表取締役</div>
+                            <div class="font-serif font-bold text-lg text-brand-900">バト・ゾリグ</div>
+                            <div class="text-xs font-sans text-gray-600">Batzorig</div>
+                            <button type="button" onclick="openLineModal()" class="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition-colors hover:bg-emerald-700">
+                                <i class="fa-brands fa-line text-sm"></i> スタッフへLINE直接連絡
+                            </button>
+                        </div>
+                        <img src="assets/images/nature-tours-logo.png" alt="Nature Tours ロゴ" class="h-16 w-28 shrink-0 object-contain" width="1699" height="926">
+                    </div>
+                </div>
+
+                <!-- Company Profile Table Section -->
+                <div id="company" class="lg:col-span-5 bg-white p-8 rounded-3xl shadow-sm border border-gray-200">
+                    <span class="text-gold-600 font-bold text-xs uppercase tracking-widest block mb-1">Overview</span>
+                    <div class="mb-6 flex items-center gap-4">
+                        <h2 class="font-serif text-2xl font-bold text-brand-900">会社概要</h2>
+                        <img src="assets/images/nature-tours-logo.png" alt="Nature Tours ロゴ" class="h-16 w-28 shrink-0 object-contain" width="1699" height="926">
+                    </div>
+
+                    <div class="divide-y divide-gray-100 text-xs sm:text-sm">
+                        <div class="py-3 grid grid-cols-3 gap-2">
+                            <span class="font-bold text-gray-500">会社名</span>
+                            <span class="col-span-2 font-semibold text-gray-900">株式会社ネイチャーツアーズ<br><span class="text-xs text-gray-500 font-normal">NATURE TOURS Co., Ltd</span></span>
+                        </div>
+                        <div class="py-3 grid grid-cols-3 gap-2">
+                            <span class="font-bold text-gray-500">所在地</span>
+                            <span class="col-span-2 text-gray-800">東京都多摩市豊ヶ丘2-5</span>
+                        </div>
+                        <div class="py-3 grid grid-cols-3 gap-2">
+                            <span class="font-bold text-gray-500">設立</span>
+                            <span class="col-span-2 text-gray-800">2026年10月10日</span>
+                        </div>
+                        <div class="py-3 grid grid-cols-3 gap-2">
+                            <span class="font-bold text-gray-500">代表取締役</span>
+                            <span class="col-span-2 text-gray-800">バト・ゾリグ</span>
+                        </div>
+                        <div class="py-3 grid grid-cols-3 gap-2">
+                            <span class="font-bold text-gray-500">事業内容</span>
+                            <span class="col-span-2 text-gray-800 leading-normal text-xs">
+                                • モンゴル航空券手配<br>
+                                • ウランバートル等のホテル手配<br>
+                                • テレルジトメンハーンリゾート手配<br>
+                                • モンゴル鉄道予約（国際・国内）<br>
+                                • バス・専用車予約<br>
+                                • 日本語ガイド・専門ガイド手配<br>
+                                • モンゴル政府観光局DMC事業
+                            </span>
+                        </div>
+                        <div class="py-3 grid grid-cols-3 gap-2">
+                            <span class="font-bold text-gray-500">連絡先</span>
+                            <span class="col-span-2 text-gray-800">TEL: 070-9181-9922</span>
+                        </div>
+                        <div class="py-3 grid grid-cols-3 gap-2">
+                            <span class="font-bold text-gray-500">営業時間</span>
+                            <span class="col-span-2 text-gray-800 text-xs">月～金 09:00～18:00<br><span class="text-gray-400">（土日祝日・年末年始休業）</span></span>
+                        </div>
+                        <div class="py-3 grid grid-cols-3 gap-2">
+                            <span class="font-bold text-gray-500">取得資格</span>
+                            <span class="col-span-2 text-gray-800 text-xs">東京都知事登録旅行サービス手配業第20953号</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Inquiry Section -->
+    <section id="contact" class="py-20 bg-sand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-bold text-xs uppercase tracking-widest">Contact Us</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-900 mt-2">BtoB お問い合わせ・ご相談</h2>
+                <p class="text-gray-600 mt-3 text-sm sm:text-base">
+                    旅行会社様・企業様・団体様からのツアー企画手配、航空券、ホテル、概算お見積りなどお気軽にお問合せください。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Direct Contact Options -->
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-4">
+                        <div class="w-12 h-12 bg-brand-900 text-gold-400 rounded-xl flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 font-bold">お電話でのご相談</div>
+                            <a href="tel:07091819922" class="text-xl font-bold text-brand-900 hover:text-gold-600">070-9181-9922</a>
+                            <p class="text-[11px] text-gray-500 mt-1">受付時間: 平日 9:00〜18:00</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-4">
+                        <div class="w-12 h-12 bg-brand-900 text-gold-400 rounded-xl flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 font-bold">メールでのお問い合わせ</div>
+                            <span class="text-sm font-bold text-brand-900">フォームより24時間受付</span>
+                            <p class="text-[11px] text-gray-500 mt-1">原則1営業日以内にご返信いたします。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-4">
+                        <div class="w-12 h-12 bg-emerald-600 text-white rounded-xl flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-brands fa-line"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 font-bold">LINEでのお問い合わせ</div>
+                            <button onclick="openLineModal()" class="text-sm font-bold text-emerald-700 hover:underline">
+                                LINE公式アカウントを追加 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </button>
+                            <p class="text-[11px] text-gray-500 mt-1">スピーディーなやり取りが可能です。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive B2B Form -->
+                <div class="lg:col-span-8 bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-gray-200">
+                    <form id="inquiryForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <input type="hidden" name="access_key" value="88d700e1-8ea9-4bcf-b77b-112620e90e03">
+                        <input type="hidden" name="subject" value="Nature Tours ウェブサイトからのお問い合わせ">
+                        <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">貴社名・団体名 <span class="text-red-500">*</span></label>
+                                <input type="text" name="company" required placeholder="例：〇〇トラベル株式会社" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">ご担当者名 <span class="text-red-500">*</span></label>
+                                <input type="text" name="name" required placeholder="例：山田 太郎" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">メールアドレス <span class="text-red-500">*</span></label>
+                                <input type="email" name="email" required placeholder="example@domain.jp" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">電話番号 <span class="text-red-500">*</span></label>
+                                <input type="tel" name="phone" required placeholder="03-0000-0000" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-2">お問い合わせ項目 <span class="text-red-500">*</span></label>
+                            <select name="inquiry_type" required class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none bg-white">
+                                <option value="">選択してください</option>
+                                <option value="地上手配・ツアー企画">モンゴル地上手配・ツアー企画のご相談</option>
+                                <option value="航空券手配">航空券手配（FIT/グループ）</option>
+                                <option value="ホテル・ゲルキャンプ予約">ホテル・テレルジゲルキャンプ予約</option>
+                                <option value="シベリア鉄道予約">シベリア鉄道・モンゴル国内鉄道予約</option>
+                                <option value="専用車・バス手配">専用車・バス手配</option>
+                                <option value="訪日インバウンド">モンゴルからの訪日（インバウンド）手配</option>
+                                <option value="その他">その他のお問い合わせ</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-2">お問い合わせ内容詳細 <span class="text-red-500">*</span></label>
+                            <textarea name="message" rows="5" required placeholder="想定人数、時期、希望ルート、特殊なご要望などご自由にご記入ください。" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-brand-900 focus:outline-none"></textarea>
+                        </div>
+
+                        <div class="text-center pt-2">
+                            <button type="submit" class="bg-brand-900 hover:bg-brand-800 text-gold-400 font-bold px-10 py-4 rounded-xl shadow-lg transition-all duration-300 w-full sm:w-auto text-base">
+                                上記内容で送信する <i class="fa-solid fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners & Affiliates Logo Bar -->
+    <section class="py-12 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-6">Partners &amp; Airlines &amp; Hotels</span>
+            <div class="partner-marquee">
+                <div class="partner-marquee-track">
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="MIATモンゴル航空">
+                    <img src="assets/images/miat-mongolian-airlines.png" alt="MIATモンゴル航空" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="アエロモンゴリア航空">
+                    <img src="assets/images/aero-mongolia.png" alt="アエロモンゴリア航空" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="UNITED AIRLINES">
+                    <img src="assets/images/united-airlines.png" alt="UNITED AIRLINES" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="フンヌエアー航空">
+                    <img src="assets/images/hunnu-air.png" alt="フンヌエアー航空" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Ulaanbaatar Railway">
+                    <img src="https://www.google.com/s2/favicons?domain=mtz.mn&amp;sz=128" alt="Ulaanbaatar Railway" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Chinggis Khaan International Airport">
+                    <img src="https://www.google.com/s2/favicons?domain=ulaanbaatar-airport.mn&amp;sz=128" alt="Chinggis Khaan International Airport" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Mongolian Tourism Organization">
+                    <img src="https://www.selenatravel.com/assets/images/mto.png" alt="Mongolian Tourism Organization" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Ulaanbaatar City">
+                    <img src="https://www.google.com/s2/favicons?domain=ulaanbaatar.mn&amp;sz=128" alt="Ulaanbaatar City" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="TOYOKO INN">
+                    <img src="https://reserve.toyoko-inn-bus.com/images/logo.png" alt="TOYOKO INN" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Tuushin Hotel">
+                    <img src="https://www.google.com/s2/favicons?domain=bestwesternmongolia.mn&amp;sz=128" alt="Tuushin Hotel" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="FLOWER HOTEL">
+                    <img src="https://www.google.com/s2/favicons?domain=flower-hotel.mn&amp;sz=128" alt="FLOWER HOTEL" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="CORPORATE HOTEL &amp; CONVENTION CENTRE ULAANBAATAR">
+                    <img src="https://www.google.com/s2/favicons?domain=corporatehotel.mn&amp;sz=128" alt="CORPORATE HOTEL &amp; CONVENTION CENTRE ULAANBAATAR" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="THE GRAND HILL HOTEL ULAANBAATAR">
+                    <img src="https://grandhillhotel.mn/contents/images/logo.png" alt="THE GRAND HILL HOTEL ULAANBAATAR" class="max-h-9 max-w-full object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="BAYANGOL HOTEL">
+                    <img src="https://www.google.com/s2/favicons?domain=bayangolhotel.mn&amp;sz=128" alt="BAYANGOL HOTEL" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="Ulaanbaatar Hotel">
+                    <img src="https://www.google.com/s2/favicons?domain=ubhotel.mn&amp;sz=128" alt="Ulaanbaatar Hotel" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="BLUE SKY HOTEL TOWER ULAANBAATAR">
+                    <img src="https://www.google.com/s2/favicons?domain=bluesky.mn&amp;sz=128" alt="BLUE SKY HOTEL TOWER ULAANBAATAR" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="NARANTUUL HOTEL">
+                    <img src="https://www.google.com/s2/favicons?domain=narantuulhotel.mn&amp;sz=128" alt="NARANTUUL HOTEL" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="KEMPINSKI HOTEL ULAANBAATAR">
+                    <img src="https://www.google.com/s2/favicons?domain=kempinski.com&amp;sz=128" alt="KEMPINSKI HOTEL ULAANBAATAR" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="RAMADA HOTEL ULAANBAATAR">
+                    <img src="https://www.google.com/s2/favicons?domain=wyndhamhotels.com&amp;sz=128" alt="RAMADA HOTEL ULAANBAATAR" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="TUMENKHAAN RESORT">
+                    <img src="https://www.google.com/s2/favicons?domain=tumenkhaan.mn&amp;sz=128" alt="TUMENKHAAN" class="h-9 w-9 object-contain">
+                </div>
+                <div class="h-16 rounded-xl border border-gray-100 bg-sand p-3 flex items-center justify-center hover:shadow-sm transition-shadow" title="ALTANTOUR LLC">
+                    <img src="https://tabi-choku.com/assets/upimg/account44/1/image_800x.jpg?t=1773277137" alt="ALTANTOUR LLC" class="max-h-9 max-w-full object-contain">
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-gray-400 text-xs py-12 border-t border-brand-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                
+                <div class="flex items-center gap-3">
+                    <img src="assets/images/nature-tours-logo.png" alt="Nature Tours ロゴ" class="h-14 w-24 object-contain" width="1699" height="926">
+                    <div>
+                        <div class="font-serif font-bold text-lg text-white mb-1">株式会社ネイチャーツアーズ</div>
+                        <div class="text-[10px] text-gold-400 uppercase">NATURE TOURS Co., Ltd</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-6 text-gray-300 text-xs">
+                    <button onclick="openPolicyModal('security')" class="hover:text-gold-400 transition-colors">情報セキュリティ方針</button>
+                    <span>・</span>
+                    <button onclick="openPolicyModal('privacy')" class="hover:text-gold-400 transition-colors">個人情報保護方針について</button>
+                    <span>・</span>
+                    <button onclick="openPolicyModal('terms')" class="hover:text-gold-400 transition-colors">旅行業約款・条件書</button>
+                </div>
+
+            </div>
+
+            <div class="text-center pt-6 border-t border-white/10 text-gray-500">
+                &copy; 2026 NATURE TOURS Co., Ltd. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Policy Modal -->
+    <div id="policyModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white text-gray-800 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="closePolicyModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 id="modalTitle" class="font-serif text-xl font-bold text-brand-900 mb-4">規約方針</h3>
+            <div id="modalBody" class="text-xs leading-relaxed space-y-3 text-gray-600">
+                <!-- Content injected via JavaScript -->
+            </div>
+            <div class="mt-6 text-right">
+                <button onclick="closePolicyModal()" class="bg-brand-900 text-white px-5 py-2 rounded-lg font-bold text-xs">閉じる</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LINE Modal -->
+    <div id="lineModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white text-gray-800 rounded-2xl max-w-md w-full p-6 text-center shadow-2xl relative">
+            <button onclick="closeLineModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-brands fa-line"></i>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-gray-900 mb-2">スタッフへLINE直接連絡</h3>
+            <p class="text-xs text-gray-600 mb-4">下記のQRコードをLINEアプリで読み取って、スタッフへ直接ご連絡いただけます。</p>
+            <img src="assets/images/line-qr-code.jpg" alt="スタッフへLINE直接連絡するためのQRコード" class="mx-auto mb-6 h-56 w-56 rounded-xl border border-gray-100 object-contain">
+            <button onclick="closeLineModal()" class="bg-emerald-600 text-white px-6 py-2.5 rounded-xl font-bold text-xs shadow hover:bg-emerald-700">OK</button>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" type="button" class="fixed bottom-6 right-6 z-40 hidden h-12 w-12 items-center justify-center rounded-full bg-brand-900 text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-brand-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2" aria-label="ページ上部へ戻る" title="ページ上部へ戻る">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Success Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-brand-900 text-white px-6 py-4 rounded-xl shadow-2xl z-50 hidden flex items-center gap-3 border border-gold-500">
+        <i class="fa-solid fa-circle-check text-gold-400 text-xl"></i>
+        <div>
+            <div class="font-bold text-sm">お問い合わせを送信しました</div>
+            <div class="text-xs text-gray-300">担当者より折り返しご連絡いたします。</div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        const updateBackToTopVisibility = () => {
+            backToTopButton.classList.toggle('hidden', window.scrollY < 400);
+            backToTopButton.classList.toggle('flex', window.scrollY >= 400);
+        };
+        window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+        updateBackToTopVisibility();
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Hero service carousel
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const heroDots = document.querySelectorAll('.hero-dot');
+        const heroLabel = document.getElementById('hero-label');
+        const heroTitle = document.getElementById('hero-title');
+        const heroDescription = document.getElementById('hero-description');
+        const heroIcon = document.getElementById('hero-icon');
+        const heroCount = document.getElementById('hero-count');
+        const heroContent = [
+            { label: 'BtoB Hotel Booking', title: 'ウランバートル市内ホテル予約', description: 'ビジネス〜5つ星高級ホテル、地方都市ホテル手配', icon: 'fa-hotel' },
+            { label: 'Air Ticket Booking', title: 'モンゴル関連 航空券手配事業', description: 'MIAT, Aero Mongolia, United Airlines, Hunnu Air等', icon: 'fa-plane-departure' },
+            { label: 'Mongolian Rail Ticket Booking', title: 'モンゴル国営鉄道・シベリア鉄道手配', description: '国際・国内鉄道切符手配、ホテル等へのデリバリー対応', icon: 'fa-train' },
+            { label: 'Rent Car Service', title: 'モンゴル専用車・バス手配事業', description: '45人乗り大型〜Haice、4WDジープ・セダンまで完備', icon: 'fa-van-shuttle' },
+            { label: 'モンゴル専門 BtoB ランドオペレーター', title: 'モンゴル手配を確かな経験と現地ネットワークで高品質にサポート!', description: '企画から予約、現地手配・緊急対応まで安心してお任せください。', icon: 'fa-shield-halved' }
+        ];
+        let activeHeroSlide = 0;
+        let heroTimer;
+
+        function showHeroSlide(index) {
+            activeHeroSlide = (index + heroContent.length) % heroContent.length;
+            const content = heroContent[activeHeroSlide];
+            heroSlides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === activeHeroSlide));
+            heroDots.forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === activeHeroSlide)));
+            heroLabel.textContent = content.label;
+            heroTitle.innerHTML = content.title;
+            heroTitle.classList.toggle('hero-title-compact', activeHeroSlide === 4);
+            heroDescription.textContent = content.description;
+            heroIcon.className = `fa-solid ${content.icon}`;
+            heroCount.textContent = `${String(activeHeroSlide + 1).padStart(2, '0')} / 05`;
+        }
+
+        function restartHeroTimer() {
+            window.clearInterval(heroTimer);
+            heroTimer = window.setInterval(() => showHeroSlide(activeHeroSlide + 1), 6000);
+        }
+
+        heroDots.forEach(dot => dot.addEventListener('click', () => {
+            showHeroSlide(Number(dot.dataset.heroSlide));
+            restartHeroTimer();
+        }));
+        restartHeroTimer();
+
+        // Business Service Tabs Switcher
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+
+            // Remove active style from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active', 'text-brand-900'));
+            buttons.forEach(btn => btn.classList.add('text-gray-600'));
+
+            // Show selected content
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Highlight the matching navigation tab, including when opened from a service card
+            const activeButton = Array.from(buttons).find(btn => btn.getAttribute('onclick')?.includes(`'${tabId}'`));
+            activeButton?.classList.add('active');
+            activeButton?.classList.remove('text-gray-600');
+        }
+
+        // Flip the strengths cards with mouse, touch, or keyboard input.
+        function toggleStrengthCard(card) {
+            const isFlipped = card.classList.toggle('is-flipped');
+            card.setAttribute('aria-pressed', String(isFlipped));
+        }
+
+        // Policy Modals
+        const policyModal = document.getElementById('policyModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
+        function openPolicyModal(type) {
+            if (type === 'security') {
+                modalTitle.textContent = '情報セキュリティ方針';
+                modalBody.innerHTML = `
+                    <p>株式会社ネイチャーツアーズ（以下、「当社」）は、顧客およびパートナー旅行会社様の情報を各種脅威から保護するため、適切な情報セキュリティ対策を実施します。</p>
+                    <p>1. 情報資産の管理と不正アクセス、漏洩、紛失の防止徹底。</p>
+                    <p>2. 法令および情報セキュリティに関する社内規定の遵守。</p>
+                    <p>3. 全従業員に対する情報セキュリティ教育の継続的な実施。</p>
+                `;
+            } else if (type === 'privacy') {
+                modalTitle.textContent = '個人情報保護方針について';
+                modalBody.innerHTML = `
+                    <p>当社は、お客様ならびに旅行会社担当者様の個人情報を保護することが重要であると認識し、以下の取り組みを推進いたします。</p>
+                    <p>1. 個人情報の適切な取得、利用および提供。</p>
+                    <p>2. 個人情報の安全管理措置およびリスク予防措置。</p>
+                    <p>3. 個人情報保護に関する法令および規範の遵守。</p>
+                `;
+            } else if (type === 'terms') {
+                modalTitle.textContent = '旅行業約款・条件書';
+                modalBody.innerHTML = `
+                    <p>当社との手配旅行契約および旅行サービス手配業務に関する条件は、観光庁認可の標準旅行業約款（手配旅行契約の部 / 旅行サービス手配業の部）に基づきます。</p>
+                    <p>具体的な手配手数料、キャンセル規定、各種諸条件につきましては、各案件のご提案時に提示する標準条件書をご確認ください。</p>
+                `;
+            }
+            policyModal.classList.remove('hidden');
+        }
+
+        function closePolicyModal() {
+            policyModal.classList.add('hidden');
+        }
+
+        // LINE Modal
+        function openLineModal() {
+            document.getElementById('lineModal').classList.remove('hidden');
+        }
+        function closeLineModal() {
+            document.getElementById('lineModal').classList.add('hidden');
+        }
+
+        // Contact Form Submission via Web3Forms
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.currentTarget;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const toast = document.getElementById('toast');
+            const originalButtonText = submitButton.innerHTML;
+
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>送信中...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { Accept: 'application/json' }
+                });
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    throw new Error(result.message || 'Form submission failed');
+                }
+
+                toast.classList.remove('hidden');
+                form.reset();
+                setTimeout(() => toast.classList.add('hidden'), 4000);
+            } catch (error) {
+                alert('送信に失敗しました。時間をおいて再度お試しください。');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            }
+        }
+
+        // Duplicate logo tiles for a seamless partner marquee
+        const partnerLogoTrack = document.querySelector('.partner-marquee-track');
+        if (partnerLogoTrack) {
+            Array.from(partnerLogoTrack.children).forEach(tile => {
+                const duplicate = tile.cloneNode(true);
+                duplicate.setAttribute('aria-hidden', 'true');
+                partnerLogoTrack.appendChild(duplicate);
+            });
+        }
+    </script>
+</body>
+</html>

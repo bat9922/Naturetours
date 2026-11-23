@@ -957,8 +957,11 @@
                     <div class="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                         <div>
                             <div class="text-xs text-gray-500">代表取締役</div>
-                            <div class="font-serif font-bold text-lg text-brand-900">バトゾリグ・バルジンニャム</div>
-                            <div class="text-xs font-sans text-gray-600">Batzorig Baljinnyam</div>
+                            <div class="font-serif font-bold text-lg text-brand-900">バト・ゾリグ</div>
+                            <div class="text-xs font-sans text-gray-600">Batzorig</div>
+                            <button type="button" onclick="openLineModal()" class="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition-colors hover:bg-emerald-700">
+                                <i class="fa-brands fa-line text-sm"></i> スタッフへLINE直接連絡
+                            </button>
                         </div>
                         <img src="assets/images/nature-tours-logo.png" alt="Nature Tours ロゴ" class="h-16 w-28 shrink-0 object-contain" width="1699" height="926">
                     </div>
@@ -987,7 +990,7 @@
                         </div>
                         <div class="py-3 grid grid-cols-3 gap-2">
                             <span class="font-bold text-gray-500">代表取締役</span>
-                            <span class="col-span-2 text-gray-800">バトゾリグ・バルジンニャム</span>
+                            <span class="col-span-2 text-gray-800">バト・ゾリグ</span>
                         </div>
                         <div class="py-3 grid grid-cols-3 gap-2">
                             <span class="font-bold text-gray-500">事業内容</span>
@@ -1262,11 +1265,9 @@
             <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
                 <i class="fa-brands fa-line"></i>
             </div>
-            <h3 class="font-serif text-xl font-bold text-gray-900 mb-2">LINEでお問い合わせ</h3>
-            <p class="text-xs text-gray-600 mb-6">下記のLINE公式アカウント、または電話番号（070-9181-9922）にて担当部署へ直接メッセージをお送りいただけます。</p>
-            <div class="bg-gray-100 p-4 rounded-xl font-mono text-sm font-bold text-brand-900 mb-6">
-                LINE ID: @naturetours-jp
-            </div>
+            <h3 class="font-serif text-xl font-bold text-gray-900 mb-2">スタッフへLINE直接連絡</h3>
+            <p class="text-xs text-gray-600 mb-4">下記のQRコードをLINEアプリで読み取って、スタッフへ直接ご連絡いただけます。</p>
+            <img src="assets/images/line-qr-code.jpg" alt="スタッフへLINE直接連絡するためのQRコード" class="mx-auto mb-6 h-56 w-56 rounded-xl border border-gray-100 object-contain">
             <button onclick="closeLineModal()" class="bg-emerald-600 text-white px-6 py-2.5 rounded-xl font-bold text-xs shadow hover:bg-emerald-700">OK</button>
         </div>
     </div>
